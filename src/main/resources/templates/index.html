@@ -1,0 +1,852 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+    <head>
+        <!-- meta data -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<link rel="stylesheet" href="assets/css/mycss/index.css" />
+		<link href="assets/css/mycss/index.css" />
+        <!--font-family-->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        
+        <!-- title of site -->
+        <title>Booking民航订票</title>
+
+        <!-- For favicon png -->
+		<link rel="shortcut icon" type="image/icon" href="assets/logo/favicon.png"/>
+       
+        <!--font-awesome.min.css-->
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+        <!--linear icon css-->
+		<link rel="stylesheet" href="assets/css/linearicons.css">
+
+		<!--animate.css-->
+        <link rel="stylesheet" href="assets/css/animate.css">
+
+		<!--flaticon.css-->
+        <link rel="stylesheet" href="assets/css/flaticon.css">
+
+		<!--slick.css-->
+        <link rel="stylesheet" href="assets/css/slick.css">
+		<link rel="stylesheet" href="assets/css/slick-theme.css">
+		
+        <!--bootstrap.min.css-->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		
+		<!-- bootsnav -->
+		<link rel="stylesheet" href="assets/css/bootsnav.css" >	
+        
+        <!--style.css-->
+        <link rel="stylesheet" href="assets/css/style.css">
+        
+        <!--responsive.css-->
+        <link rel="stylesheet" href="assets/css/responsive.css">
+        
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		
+        <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+		<style>
+			.list ul li a:hover{
+				box-shadow:  0 0 15px #999;
+			}
+		</style>
+    </head>
+	
+	<body>
+		<!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+		
+		<!--header-top start -->
+		<header id="header-top" class="header-top">
+			<ul>
+				<li>
+					<div class="header-top-left">
+						<ul>
+							<li class="select-opt">
+								<select name="language" id="language">
+									<option value="default">EN</option>
+									<option value="Bangla">BN</option>
+									<option value="Arabic">AB</option>
+								</select>
+							</li>
+							<li class="select-opt">
+								<select name="currency" id="currency">
+									<option value="usd">USD</option>
+									<option value="euro">Euro</option>
+									<option value="bdt">BDT</option>
+								</select>
+							</li>
+							<li class="select-opt">
+								<a href="#"><span class="lnr lnr-magnifier"></span></a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="head-responsive-right pull-right">
+					<div class="header-top-right">
+						<ul>
+							<li class="header-top-contact">
+								<span class="glyphicon glyphicon-user"> </span>
+								<a href="userInfo.html">未登录</a>
+							</li>
+							<li class="header-top-contact">
+								<a href="sign_in.html">sign in</a>
+							</li>
+							<li class="header-top-contact">
+								<a href="sign_up.html">register</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+					
+		</header><!--/.header-top-->
+		<!--header-top end -->
+
+		<!-- top-area Start -->
+		<section class="top-area">
+			<div class="header-area">
+				<!-- Start Navigation -->
+			    <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy"  data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+
+			        <div class="container">
+
+			            <!-- Start Header Navigation -->
+			            <div class="navbar-header">
+							<a class="navbar-brand" href="index.html"><span>Book</span>ing</a>
+							<ul class="navbar-left" style="padding: 34px 45px;">
+								<li><a class="" href="flightInfo.html">订票</a></li>
+							</ul>
+			                
+							
+			            </div><!--/.navbar-header-->
+			            <!-- End Header Navigation -->
+
+			            <!-- Collect the nav links, forms, and other content for toggling -->
+			            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+			                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+			                    
+								<li class=" scroll active"><a href="#home">首页</a></li>
+								<li class="scroll"><a href="#flight">航班列表</a></li>
+			                    <li class="scroll"><a href="#works">如何订票</a></li>
+			                    <li class="scroll"><a href="#explore">推荐城市</a></li>
+			                    <li class="scroll"><a href="#reviews">review</a></li>
+			                    <li class="scroll"><a href="#blog">咨询与交流</a></li>
+			                    <li class="scroll"><a href="#contact">给我们留言</a></li>
+			                </ul><!--/.nav -->
+			            </div><!-- /.navbar-collapse -->
+			        </div><!--/.container-->
+			    </nav><!--/nav-->
+			    <!-- End Navigation -->
+			</div><!--/.header-area-->
+		    <div class="clearfix"></div>
+
+		</section><!-- /.top-area-->
+		<!-- top-area End -->
+
+		<!--welcome-hero start -->
+		<section id="home" class="welcome-hero">
+			<div class="container">
+				<div class="welcome-hero-txt">
+					<h2>Booking<br>一款简单易用的订票网站</h2>
+					<p>
+						Where do you want to go ? in just One click 
+					</p>
+				</div>
+				
+				<div class="submit-form col-md-10 col-md-offset-1">
+					<div class="row">
+						<form id="form-submit" action="" method="get">
+							<div class="col-md-2" style="padding-right: 0;">
+								<fieldset>
+								    <label for="origin" class="text-left">出发地:</label>
+								    <input name="origin" type="text" class="form-control" id="origin" placeholder="ex: 石家庄" required="" onchange='this.form.()'>
+								</fieldset>
+								
+							</div>
+							
+							<div class="col-md-1" onclick="exchange()" style="padding: 0; margin-top: 10px; text-align: center;">
+								<br />
+								<span class="glyphicon glyphicon-resize-horizontal"></span>
+								
+							</div>
+							<div class="col-md-2" style="padding-left: 0;">
+								<fieldset>
+								    <label for="destination" class="text-left">目的地:</label>
+								    <input name="destination" type="text" class="form-control" id="destination" placeholder="ex: 上海" required="" onchange='this.form.()'>
+								</fieldset>
+							</div>
+							<div class="col-md-3">
+								<fieldset>
+								    <label for="departure" class="text-left">Departure date:</label>
+								    <input name="deparure" type="date" class="form-control date" id="deparure" placeholder="Select date..." required="" onchange='this.form.()'>
+								</fieldset>
+							</div>
+							<div class="col-md-3">
+								<fieldset class="text-right">
+								    <label for="return" class="text-left">Return date:</label>
+								    <input disabled="true" name="return" type="date" class="form-control" id="return" placeholder="Select date..." required="" onchange='this.form.()'>
+								</fieldset>
+							</div>
+							<div class="col-md-1">
+								
+								    
+									<br />
+								    <input name="search" type="submit" class="btn btn-default" id="search" value="搜索" style="margin-top: 4px;">
+							</div>
+						</form>
+					</div>
+				</div>
+			
+			</div>
+			
+		</section>
+		<!--welcome-hero end -->
+			
+		<!--list-topics start -->
+		<section id="flight" class="flight" style="margin: 40px;padding: 0 0 90px;">
+			<div class="container">
+				
+				<div class="row ann" style="font-size:12px ;">
+					
+					<h4 style="font-size: 14px;color: #8f949d;margin: 12px 0 20px; display: inline;">
+						<span class="glyphicon glyphicon-cloud"></span><span> 【近期公告】</span>
+					<marquee style="width: 80%;">
+						<taglist>
+							<a href="#">※ 本系统处于测试阶段。</a>
+						</taglist>
+					</marquee>
+					<span class="text-right"><a href="#">更多</a></span>
+					</h4>
+					
+				</div>
+				<br/>
+				<div class="row section-header">
+					<h2>flight list</h2>
+				</div><!--/.section-header-->
+				<div class="row" style="margin-top: 20px;">
+					<div class="list tab-content" >
+						<ul>
+							<li class="col-md-3 col-sm-4">
+								<a data-i ="1-1" data-ori = "石家庄" data-des = "上海" data-price="290" href="flightDetails.html" target="_blank">
+									<p class="price">
+										<span>￥</span>
+										<em>290</em>
+									</p>
+									石家庄 <span class="glyphicon glyphicon-plane"></span>
+									<i></i>
+									<div class="arrival">上海</div>
+									<span class="btn-1" style="text-align: right;">预定</span>
+								</a>
+							</li>
+							<li class="col-md-3 col-sm-4">
+								<a data-i ="1-1" data-ori = "石家庄" data-des = "上海" data-price="290" href="#" target="_blank">
+									<p class="price">
+										<span>￥</span>
+										<em>290</em>
+									</p>
+									石家庄 <span class="glyphicon glyphicon-plane"></span>
+									<i></i>
+									<div class="arrival">上海</div>
+									<span class="btn-1" style="text-align: right;">预定</span>
+								</a>
+							</li>
+							<li class="col-md-3 col-sm-4">
+								<a data-i ="1-1" data-ori = "石家庄" data-des = "上海" data-price="290" href="#" target="_blank">
+									<p class="price">
+										<span>￥</span>
+										<em>290</em>
+									</p>
+									石家庄 <span class="glyphicon glyphicon-plane"></span>
+									<i></i>
+									<div class="arrival">上海</div>
+									<span class="btn-1" style="text-align: right;">预定</span>
+								</a>
+							</li>
+							<li class="col-md-3 col-sm-4">
+								<a data-i ="1-1" data-ori = "石家庄" data-des = "上海" data-price="290" href="#" target="_blank">
+									<p class="price">
+										<span>￥</span>
+										<em>290</em>
+									</p>
+									石家庄 <span class="glyphicon glyphicon-plane"></span>
+									<i></i>
+									<div class="arrival">上海</div>
+									<span class="btn-1" style="text-align: right;">预定</span>
+								</a>
+							</li>
+							<li class="col-md-3 col-sm-4">
+								<a data-i ="1-1" data-ori = "石家庄" data-des = "上海" data-price="290" href="#" target="_blank">
+									<p class="price">
+										<span>￥</span>
+										<em>290</em>
+									</p>
+									石家庄 <span class="glyphicon glyphicon-plane"></span>
+									<i></i>
+									<div class="arrival">上海</div>
+									<span class="btn-1" style="text-align: right;">预定</span>
+								</a>
+							</li>
+							<li class="col-md-3 col-sm-4">
+								<a data-i ="1-1" data-ori = "石家庄" data-des = "上海" data-price="290" href="#" target="_blank">
+									<p class="price">
+										<span>￥</span>
+										<em>290</em>
+									</p>
+									石家庄 <span class="glyphicon glyphicon-plane"></span>
+									<i></i>
+									<div class="arrival">上海</div>
+									<span class="btn-1" style="text-align: right;">预定</span>
+								</a>
+							</li>
+							<li class="col-md-3 col-sm-4">
+								<a data-i ="1-1" data-ori = "石家庄" data-des = "上海" data-price="290" href="#" target="_blank">
+									<p class="price">
+										<span>￥</span>
+										<em>290</em>
+									</p>
+									石家庄 <span class="glyphicon glyphicon-plane"></span>
+									<i></i>
+									<div class="arrival">上海</div>
+									<span class="btn-1" style="text-align: right;">预定</span>
+								</a>
+							</li>
+							<li class="col-md-3 col-sm-4">
+								<a data-i ="1-1" data-ori = "石家庄" data-des = "上海" data-price="290" href="#" target="_blank">
+									<p class="price">
+										<span>￥</span>
+										<em>290</em>
+									</p>
+									石家庄 <span class="glyphicon glyphicon-plane"></span>
+									<i></i>
+									<div class="arrival">上海</div>
+									<span class="btn-1" style="text-align: right;">预定</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			
+			</div><!--/.container-->
+
+		</section><!--/.list-topics-->
+		<!--list-topics end-->
+
+
+
+
+		<!--works start -->
+		<section id="works" class="works">
+			<div class="container">
+				<div class="section-header">
+					<h2>本系统订票流程</h2>
+					<p>知道更多本网站购票的流程和功能</p>
+				</div><!--/.section-header-->
+				<div class="works-content">
+					<div class="row">
+						<div class="col-md-4 col-sm-6">
+							<div class="single-how-works">
+								<div class="single-how-works-icon">
+									<i class="flaticon-lightbulb-idea"></i>
+								</div>
+								<h2><a href="#">选择<span>想要预定的航班</span> </a></h2>
+								<p>
+									检索条件包括<br>出发地，目的地，出发时间，到达时间。
+								</p>
+								<button class="welcome-hero-btn how-work-btn" onclick="window.location.href='#'">
+									了解更多
+								</button>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6">
+							<div class="single-how-works">
+								<div class="single-how-works-icon">
+									<i class="flaticon-networking"></i>
+								</div>
+								<h2><a href="#">选择<span>一条航班订票</span></a></h2>
+								<p>
+									订票需要添加本次订单的乘客信息，<br />
+									包括乘客姓名和身份证号。
+								</p>
+								<button class="welcome-hero-btn how-work-btn" onclick="window.location.href='#'">
+									了解更多
+								</button>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6">
+							<div class="single-how-works">
+								<div class="single-how-works-icon">
+									<i class="flaticon-location-on-road"></i>
+								</div>
+								<h2><a href="#">确认订单 <span>完成支付</span></a></h2>
+								<p>
+									用户在确认订单信息无误后，<br />
+									确认订单，完成支付，订单完成。
+								</p>
+								<button class="welcome-hero-btn how-work-btn" onclick="window.location.href='#'">
+									了解更多
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!--/.container-->
+		
+		</section><!--/.works-->
+		<!--works end -->
+
+		<!--explore start -->
+		<section id="explore" class="explore">
+			<div class="container">
+				<div class="section-header">
+					<h2>recommend city</h2>
+					<p>推荐城市部分有点混，不过推荐的不是城市，是你想来就来。</p>
+				</div><!--/.section-header-->
+				<div class="explore-content">
+					<div class="row">
+						<div class="col-md-4 col-sm-6">
+							<div class="single-explore-item">
+								<div class="single-explore-img">
+									<img src="assets/images/explore/e3.jpg" alt="explore image">
+									<div class="single-explore-img-info">
+										<button onclick="window.location.href='#'">Booking Now</button>
+										<div class="single-explore-image-icon-box">
+											<ul>
+												<li>
+													<div class="single-explore-image-icon">
+														<i class="fa fa-arrows-alt"></i>
+													</div>
+												</li>
+												<li>
+													<div class="single-explore-image-icon">
+														<i class="fa fa-bookmark-o"></i>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="single-explore-txt bg-theme-3">
+									<h2><a href="#">上海</a></h2>
+									<p class="explore-rating-price">
+										<p class="explore-rating-price">
+											<span class="explore-rating">cool</span>
+											<a href="#"> 10 times</a> 
+											<span class="explore-price-box">
+												form
+												<span class="explore-price">￥800</span>
+											</span>
+											 <a href="#">City</a>
+										</p>
+									</p>
+									
+									<div class="explore-open-close-part">
+										<div class="row">
+											<div class="col-sm-5">
+												<button class="close-btn" onclick="window.location.href='#'">Booking now</button>
+											</div>
+											<div class="col-sm-7">
+												<div class="explore-map-icon">
+													<a href="#"><i data-feather="map-pin"></i></a>
+													<a href="#"><i data-feather="upload"></i></a>
+													<a href="#"><i data-feather="heart"></i></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-4 col-sm-6">
+							<div class="single-explore-item">
+								<div class="single-explore-img">
+									<img src="assets/images/explore/e4.jpg" alt="explore image">
+									<div class="single-explore-img-info">
+										<button onclick="window.location.href='#'">Booking Now</button>
+										<div class="single-explore-image-icon-box">
+											<ul>
+												<li>
+													<div class="single-explore-image-icon">
+														<i class="fa fa-arrows-alt"></i>
+													</div>
+												</li>
+												<li>
+													<div class="single-explore-image-icon">
+														<i class="fa fa-bookmark-o"></i>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							
+								<div class="single-explore-txt bg-theme-2">
+									<h2><a href="#">海南</a></h2>
+									<p class="explore-rating-price">
+										<p class="explore-rating-price">
+											<span class="explore-rating">hot</span>
+											<a href="#"> 10 times</a> 
+											<span class="explore-price-box">
+												form
+												<span class="explore-price">￥800</span>
+											</span>
+											 <a href="#">City</a>
+										</p>
+									</p>
+									
+									<div class="explore-open-close-part">
+										<div class="row">
+											<div class="col-sm-5">
+												<button class="close-btn open-btn" onclick="window.location.href='#'">right now</button>
+											</div>
+											<div class="col-sm-7">
+												<div class="explore-map-icon">
+													<a href="#"><i data-feather="map-pin"></i></a>
+													<a href="#"><i data-feather="upload"></i></a>
+													<a href="#"><i data-feather="heart"></i></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6">
+							<div class="single-explore-item">
+								<div class="single-explore-img">
+									<img src="assets/images/explore/e3.jpg" alt="explore image">
+									<div class="single-explore-img-info">
+										<button onclick="window.location.href='#'">Booking Now</button>
+										<div class="single-explore-image-icon-box">
+											<ul>
+												<li>
+													<div class="single-explore-image-icon">
+														<i class="fa fa-arrows-alt"></i>
+													</div>
+												</li>
+												<li>
+													<div class="single-explore-image-icon">
+														<i class="fa fa-bookmark-o"></i>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="single-explore-txt bg-theme-3">
+									<h2><a href="#">哈尔滨</a></h2>
+									<p class="explore-rating-price">
+										<p class="explore-rating-price">
+											<span class="explore-rating">cool</span>
+											<a href="#"> 10 times</a> 
+											<span class="explore-price-box">
+												form
+												<span class="explore-price">￥800</span>
+											</span>
+											 <a href="#">City</a>
+										</p>
+									</p>
+									
+									<div class="explore-open-close-part">
+										<div class="row">
+											<div class="col-sm-5">
+												<button class="close-btn" onclick="window.location.href='#'">Booking now</button>
+											</div>
+											<div class="col-sm-7">
+												<div class="explore-map-icon">
+													<a href="#"><i data-feather="map-pin"></i></a>
+													<a href="#"><i data-feather="upload"></i></a>
+													<a href="#"><i data-feather="heart"></i></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+							
+					</div>
+				</div>
+			</div><!--/.container-->
+
+		</section><!--/.explore-->
+		<!--explore end -->
+
+		<!--reviews start -->
+		<section id="reviews" class="reviews">
+			<div class="section-header">
+				<h2>clients reviews</h2>
+				<p>What our client say about us</p>
+			</div><!--/.section-header-->
+			
+
+		</section><!--/.reviews-->
+		<!--reviews end -->
+
+		<!-- statistics strat -->
+		<section id="statistics"  class="statistics">
+			<div class="container">
+				<div class="statistics-counter" > 
+					<div class="col-md-3 col-sm-6">
+						<div class="single-ststistics-box">
+							<img src="assets/images/clients/c3.png" width="50px" height="50px" ><hr />
+							<p>请不要温柔走进那良夜，老年就应该在暮夜中咆哮！</p>
+						</div><!--/.single-ststistics-box-->
+					</div><!--/.col-->
+					<div class="col-md-3 col-sm-6">
+						<div class="single-ststistics-box">
+							<img src="assets/images/clients/c3.png" width="50px" height="50px" ><hr />
+							<p>请不要温柔走进那良夜，老年就应该在暮夜中咆哮！</p>
+						</div><!--/.single-ststistics-box-->
+					</div><!--/.col-->
+					<div class="col-md-3 col-sm-6">
+						<div class="single-ststistics-box">
+							<img src="assets/images/clients/c3.png" width="50px" height="50px" ><hr />
+							<p>请不要温柔走进那良夜，老年就应该在暮夜中咆哮！</p>
+						</div><!--/.single-ststistics-box-->
+					</div><!--/.col-->
+					<div class="col-md-3 col-sm-6">
+						<div class="single-ststistics-box">
+							<img src="assets/images/clients/c3.png" width="50px" height="50px" ><hr />
+							<p>请不要温柔走进那良夜，老年就应该在暮夜中咆哮！</p>
+						</div><!--/.single-ststistics-box-->
+					</div><!--/.col-->
+				</div><!--/.statistics-counter-->	
+			</div><!--/.container-->
+
+		</section><!--/.counter-->	
+		<!-- statistics end -->
+
+		<!--blog start -->
+		<section id="blog" class="blog" >
+			<div class="container">
+				<div class="section-header">
+					<h2>news and articles</h2>
+					<p>Always upto date with our latest News and Articles </p>
+				</div><!--/.section-header-->
+				<div class="blog-content">
+					<div class="row">
+						<div class="col-md-4 col-sm-6">
+							<div class="single-blog-item">
+								
+								<div class="single-blog-item-txt">
+									
+									<h2>
+										<a href="#">新闻咨询<span class="glyphicon glyphicon-link"></span></a> 
+										
+									</h2>
+									<hr />
+									<h4>posted <span>by</span> march 2018</h4>
+									
+									<ul>
+										<li>※ <a href="#">飞机燃油价格上涨...</a> </li>
+										<li>※ <a href="#">部分飞机取消飞机餐？</a></li>
+										<li>※ <a href="#">部分飞机取消飞机餐？</a></li>
+										<li>※ <a href="#">部分飞机取消飞机餐？</a></li>
+										<li>※ <a href="#">部分飞机取消飞机餐？</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6">
+							<div class="single-blog-item">
+								
+								<div class="single-blog-item-txt" >
+									<h2>
+										<a href="#">常见问题FAQ<span class="glyphicon glyphicon-menu-right"></span></a> 
+									</h2>
+									<hr />
+									<ul class="FAQ">
+										<li><a href="#">其他</a></li>
+										<li><a href="#">退票</a></li>
+										<li><a href="#">预定</a></li>
+										<li><a href="#">须知</a></li>
+										<li><a href="#">注册</a></li>
+										<li><a href="#">座位</a></li>
+										<li><a href="#">更多问题...</a></li>
+									</ul>
+								</div>
+								
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6">
+							<div class="single-blog-item">
+								<div class="single-blog-item-txt">
+									<h2>
+										<a href="#">交流微信公众号</a> 
+									</h2>
+									<hr />
+									<div class="center text-center">
+										<p style="color: #ff545a; font-size: 12px;">微信扫一扫<br>欢迎尬聊！</p>
+										<img src="assets/css/ajax-loader.gif" width="100px" height="100px"/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!--/.container-->
+			
+		</section><!--/.blog-->
+		<!--blog end -->
+
+		<!--subscription strat -->
+		<section id="contact"  class="subscription">
+			<div class="container">
+				<div class="subscribe-title text-center">
+					<h2>
+						如果您有特别想告诉我们的事情！
+					</h2>
+					<p>
+						欢迎给我们留言
+					</p>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="subscription-input-group">
+							<form action="#">
+								<textarea rows="4" class="subscription-input-form" placeholder="Enter your advice"></textarea>
+								<button class="appsLand-btn subscribe-btn" onclick="window.location.href='#'">
+									submit
+								</button>
+							</form>
+						</div>
+					</div>	
+				</div>
+			</div>
+
+		</section><!--/subscription-->	
+		<!--subscription end -->
+
+		<!--footer start-->
+		<footer id="footer"  class="footer">
+			<div class="container">
+				<div class="footer-menu">
+		           	<div class="row">
+			           	<div class="col-sm-3">
+			           		 <div class="navbar-header">
+				                <a class="navbar-brand" href="index.html"><span>Book</span>ing</a>
+				            </div><!--/.navbar-header-->
+			           	</div>
+			           	<div class="col-sm-9">
+			           		<ul class="footer-menu-item">
+			                    <li class=" scroll active"><a href="#home">首页</a></li>
+			                    <li class="scroll"><a href="#flight">航班列表</a></li>
+			                    <li class="scroll"><a href="#works">如何订票</a></li>
+			                    <li class="scroll"><a href="#explore">推荐城市</a></li>
+			                    <li class="scroll"><a href="#reviews">review</a></li>
+			                    <li class="scroll"><a href="#blog">咨询与交流</a></li>
+			                    <li class="scroll"><a href="#contact">给我们留言</a></li>
+			                </ul><!--/.nav -->
+			           	</div>
+		           </div>
+				</div>
+				<div class="hm-footer-copyright">
+					<div class="row">
+						<div class="col-sm-5">
+							<p>
+								&copy;copyright. master never team；
+							</p><!--/p-->
+						</div>
+						<div class="col-sm-7">
+							<div class="footer-social">
+								<span><span><i class="fa fa-bath" aria-hidden="true">  +与作者取得联系</i></span></span>
+								<span><i class="fa fa-phone"> +86  187 3119 xxxx</i></span>
+								<div id="Layer1" style="display:none; position: absolute; left:413px ; top: -168px; z-index: 100;">
+									<img width="150" height="150" src="assets/img/myQQ.jpg" />
+								</div>
+								<a onmouseout="hiddenPic();" onmousemove="showPic();"><i class="fa fa-qq"></i></a>	
+								<!-- <img src="assets/img/myQQ.jpg" width="50" height="50" /> -->
+								<div id="Layer2" style="display:none; position: absolute; left:467px ; top: -152px; z-index: 100;">
+									<img width="150" height="150" src="assets/img/myWechat.jpg" />
+								</div>
+								<a onmouseout="hiddenPic2();" onmousemove="showPic2();"><i class="fa fa-wechat"></i></a>
+								<a href="https://twitter.com/?lang=zh-cn"><i class="fa fa-twitter"></i></a>
+								<a href="https://www.google.com/"><i class="fa fa-google-plus"></i></a>
+							</div>
+						</div>
+					</div>
+					
+				</div><!--/.hm-footer-copyright-->
+			</div><!--/.container-->
+
+			<div id="scroll-Top">
+				<div class="return-to-top">
+					<i class="fa fa-angle-up " id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+				</div>
+				
+			</div><!--/.scroll-Top-->
+			
+        </footer><!--/.footer-->
+		<!--footer end-->
+		
+		<!-- Include all js compiled plugins (below), or include individual files as needed -->
+
+		<script type="text/javascript">
+			function exchange(){
+				
+				var num1 = document.getElementById("origin").value;
+				var num2 = document.getElementById("destination").value; 
+				{
+					document.getElementById("origin").value = num2;
+					document.getElementById("destination").value = num1;
+				}
+				}
+			function showPic(){
+				
+					document.getElementById("Layer1").style.display = ""; 
+				} 
+			function hiddenPic(){ 
+					
+					document.getElementById("Layer1").style.display = "none"; 
+				} 
+			function showPic2(){
+				
+					document.getElementById("Layer2").style.display = ""; 
+				} 
+			function hiddenPic2(){ 
+					
+					document.getElementById("Layer2").style.display = "none"; 
+				} 
+		</script>
+		<script src="assets/js/jquery.js"></script>
+        
+        <!--modernizr.min.js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+		
+		<!--bootstrap.min.js-->
+        <script src="assets/js/bootstrap.min.js"></script>
+		
+		<!-- bootsnav js -->
+		<script src="assets/js/bootsnav.js"></script>
+
+        <!--feather.min.js-->
+        <script  src="assets/js/feather.min.js"></script>
+
+        <!-- counter js -->
+		<script src="assets/js/jquery.counterup.min.js"></script>
+		<script src="assets/js/waypoints.min.js"></script>
+
+        <!--slick.min.js-->
+        <script src="assets/js/slick.min.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+		     
+        <!--Custom JS-->
+        <script src="assets/js/custom.js"></script>
+        
+    </body>
+	
+</html>

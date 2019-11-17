@@ -16,4 +16,15 @@ public class UserService {
         User user = userMapper.getUserByid(id);
         return user;
     }
+
+    public User getUserByUsername(String username){
+        System.out.println("判断用户名:"+username);
+        User user = userMapper.getUserByUsername(username);
+
+        if (user == null || "".equals(user)){
+            return null;
+        }else {
+            return user;
+        }
+    }
 }

@@ -10,8 +10,8 @@ import java.util.Map;
 @Controller
 public class HomeController {
 
-    @RequestMapping("index"+"home")
-    public String index(List<Flight> flightList){
+    @RequestMapping("index")
+    public String index(){
 
         return "index";
     }

@@ -1,3 +1,8 @@
+server:
+  servlet:
+    context-path: /air
+
+
 spring:
   datasource:
     username: root
@@ -34,3 +39,9 @@ spring:
 #      - classpath:sql/employee.sql
 #    hikari:
 #      schema: classpath:sql/department.sql
+  thymeleaf:
+    cache: false
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
