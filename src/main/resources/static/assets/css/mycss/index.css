@@ -1,0 +1,89 @@
+/*
+1.theme content
+2.航线列表+检索条件
+3.推荐城市列表
+4.旅程服务部分
+5.新闻咨询+问题+微信公众号
+6.底部功能接口+网站信息
+*/
+
+.submit-form{
+	height: 95px;
+	margin-top: 60px;
+	padding-top: 20px;
+	background: #FFFFFF;
+	opacity: 0.9;
+	color: #101010;
+}
+
+.section-header{
+    position: relative;
+    text-align: center;
+}
+.section-header h2{
+    color: #505866;
+    font-size:24px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+}
+.section-header h2 span{text-transform: lowercase;}
+.section-header p{
+    font-size:16px;
+}
+/* section-header */
+.fix{position: relative;clear: both;}
+
+
+
+/*航班列表部分*/
+.price{
+	    /* font-size: 13px; */
+	    position: absolute;
+	    right: 30px;
+	    top: 10px;
+		color: #ff545a;
+		font-size: 18px;
+}
+.list li{
+	padding:0;
+}
+.list li a{
+	    border: none;
+	    background: #F5F5F5;
+	    margin: 0 10px 10px;
+	    height: 100px;
+	    text-align: left;
+	    color: #999;
+	    padding: 20px 20px;
+		display: block;
+}
+.arrival{
+	font-size: 20px;
+	color: black;
+	margin-top: 10px;
+}
+.btn-1{
+	position: absolute;
+	    right: 30px;
+	    background: #ff545a;
+	    color: white;
+	    padding: 5px 20px;
+	    font-size: 12px;
+	    top: 45px;
+	    border-radius: 3px;
+}
+
+
+.single-ststistics-box p,img{
+	color: white;
+	
+}
+
+.ann marquee taglist a,span a{
+	font-size: 14px;color: #8f949d;
+}
+.ann span a:hover{
+	color: #ff545a;
+}

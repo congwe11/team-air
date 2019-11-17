@@ -1,0 +1,94 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+*{
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	box-sizing:border-box;
+}
+body{
+	font-family: 'Arial', sans-serif;
+	font-size:14px;
+	color:#a09e9c;
+	text-transform:initial;
+	max-width:1920px;
+	margin:0 auto;
+	overflow-x:hidden;
+}
+nav.navbar.bootsnav {
+	background-color:#fff;
+	border-bottom: transparent;
+}
+.wrap-sticky nav.navbar.bootsnav.sticked {background-color: #fff;box-shadow: 0 2px 5px rgba(0,0,0,.2);}
+
+/*.navbar-brand*/
+.navbar-header a.navbar-brand,.navbar-header a.navbar-brand:hover,.navbar-header a.navbar-brand:focus {
+	display: inline-block;
+	color: #1b1e20;
+	font-size: 20px;
+	font-weight: 700;
+	padding: 34px 0px;
+	text-transform:capitalize;
+}
+.navbar-header a.navbar-brand span{display: inline-block;color:#ff545a;text-transform:capitalize;}
+
+.wrap-sticky nav.navbar.bootsnav.sticked .navbar-header a.navbar-brand,.wrap-sticky nav.navbar.bootsnav.sticked .navbar-header a.navbar-brand:hover,.wrap-sticky nav.navbar.bootsnav.sticked .navbar-header a.navbar-brand:focus {padding:30px 0px;}
+/*.navbar-brand*/
+
+/*.nav li*/
+nav.navbar.bootsnav ul.nav > li > a {
+	color: #859098;
+	font-size: 14px;
+	font-weight: 500;
+	text-transform:uppercase;
+	-webkit-transition: 0.3s linear; 
+	-moz-transition: 0.3s linear; 
+	-ms-transition: 0.3s linear; 
+	-o-transition: 0.3s linear; 
+	transition: 0.3s linear;
+}
+nav.navbar.bootsnav ul.nav > li > a {padding:34px 21px;}
+nav.navbar.bootsnav ul.nav > li > a:hover,nav.navbar.bootsnav ul.nav > li > a:focus{color: #ff545a;}
+nav.navbar.bootsnav ul.nav > li.active>a {color: #ff545a;}
+
+nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle:after {
+	content: "";
+}
+nav.navbar.bootsnav ul.nav > li.dropdown span {
+	font-size: 8px;
+	margin-left: 15px;
+}
+.wrap-sticky nav.navbar.bootsnav.sticked ul.nav > li > a{padding:34px 21px;}
+/*.nav li*/
+.navbar-left,.navbar-right{
+	padding: 34px 45px;
+	margin: 0;
+}
+.nav1{
+	display: inline-block;
+	padding: 0 40px;
+}
+.nav1 a{
+	text-decoration: none;	
+	color: #859098;
+}
+.nav1 a:hover{
+	color: #ff545a;
+}
+.nav2{
+	display: inline-block;
+	padding: 0 15px;
+	
+}
+.nav2 a{
+	text-decoration: none;	
+	color: #859098;
+	font-size: 12px;
+}
+.navbar{
+		box-shadow: 0 0 25px #ccc;
+}
