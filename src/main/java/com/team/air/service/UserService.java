@@ -27,4 +27,9 @@ public class UserService {
             return user;
         }
     }
+
+    public int addUser(User user){
+        System.out.println("用户注册："+user.getUsername());
+        return userMapper.addUser(user);
+    }
 }

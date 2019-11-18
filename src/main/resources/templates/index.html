@@ -99,7 +99,7 @@
 								<span class="glyphicon glyphicon-user"> </span>
 								<!--<span th:text="${session.getAttribute(user)}"></span>-->
 								<!--<a href="userInfo.html" th:text="${user.username}" th:if="${not #strings.isEmpty(user.username)}">未登录</a>-->
-								<a th:href="@{user/sign}" th:text="(${session.loginUser}) ? ${session.loginUser.nickname} : '未登录' ">未登录</a>
+								<a th:href="@{user/selfInfo}" th:text="(${session.loginUser}) ? ${session.loginUser.nickname} : '未登录' ">未登录</a>
 
 							</li>
 							<li class="header-top-contact">
@@ -108,7 +108,7 @@
 							</li>
 
 							<li class="header-top-contact">
-								<a th:href="@{register}">register</a>
+								<a th:href="@{user/sign_up}">register</a>
 							</li>
 						</ul>
 					</div>

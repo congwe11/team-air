@@ -12,6 +12,21 @@ public class User {
     private String address;
     private Integer sex;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_id=" + user_id +
+                ", username='" + username + '\'' +
+                ", psw='" + psw + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", name='" + name + '\'' +
+                ", numbers='" + numbers + '\'' +
+                ", ID='" + ID + '\'' +
+                ", address='" + address + '\'' +
+                ", sex=" + sex +
+                '}';
+    }
+
     public Integer getUser_id() {
         return user_id;
     }

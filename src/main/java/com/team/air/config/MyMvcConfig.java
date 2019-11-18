@@ -19,9 +19,11 @@ public class MyMvcConfig {
                 registry.addViewController("/").setViewName("index");
                 registry.addViewController("/index").setViewName("index");
                 registry.addViewController("/index.html").setViewName("index");
-                registry.addViewController("/sign").setViewName("user/sign_in");
-                registry.addViewController("/user/sign").setViewName("user/sign_in");
-                registry.addViewController("/register").setViewName("user/sign_up");
+//                registry.addViewController("/sign").setViewName("custom/sign_in");
+                registry.addViewController("/user").setViewName("custom/sign_in");
+                registry.addViewController("/user/sign").setViewName("custom/sign_in");
+//                registry.addViewController("/sign_up").setViewName("custom/sign_up");
+                registry.addViewController("/user/sign_up").setViewName("custom/sign_up");
                 registry.addViewController("/index_text").setViewName("index_text");
 //                registry.addViewController("/").setViewName("index_text");
             }
@@ -32,7 +34,7 @@ public class MyMvcConfig {
                 //静态资源： *.css; *.js;
                 //SpringBoot已经做好了静态资源映射
                 registry.addInterceptor(new LoginHandlerInterceptor())
-                        .addPathPatterns("/book","/user/book");
+                        .addPathPatterns("/book","/user/book","/user/selfInfo");
             }
 
         };

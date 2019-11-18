@@ -1,6 +1,7 @@
 package com.team.air.controller.user;
 
 import com.team.air.bean.User;
+import com.team.air.mapper.UserMapper;
 import com.team.air.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,9 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.thymeleaf.util.StringUtils;
+
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,12 +22,12 @@ import java.util.Map;
 @Controller
 public class UserController {
 
-    private String prefile = "user/";
+    private String prefile = "custom/";
     @Autowired
     UserService userService;
 
-
-
+    @Autowired
+    UserMapper userMapper;
 
 
     @PostMapping("/login")
@@ -61,6 +61,35 @@ public class UserController {
     }
 
 
+    //用户注册
+    //springMVC自动将请求参数和入参对象的属性进行一一绑定，要求请求参数的名字和javabean入参的对象里面的属性名是一样的
+    @PostMapping("/resgister")
+    public String resgister(User user,Model model){
+        //rediect: 重定向到一个页面 /代表当前项目路径
+        //forward: 转发到一个地址
+        //来到登录页面
+        System.out.println("用户注册的信息："+user);
+        //判断用户是否已经存在
+        if (userService.getUserByUsername(user.getUsername()) == null){
+            //用户名可用，保存用户，返回登录页面
+            //用户id自己获取用户总数+1
+            int id = userMapper.countUser();
+            user.setUser_id(id+1);
+
+            //保存到数据库
+            int no = userService.addUser(user);
+            System.out.println("addUser():"+no);
+            model.addAttribute("success","注册成功，请登录！");
+            model.addAttribute("User",user);
+            return prefile+"sign_in";
+        }else {
+            //用户名已存在，注册失败，返回注册页面
+//            map.put("error","该用户名已存在！请重新输入");
+//            model.addAttribute("user",user);
+            model.addAttribute("error","该用户名已存在！请重新输入");
+            return prefile+"sign_up";
+        }
+    }
 
     @RequestMapping("/book")
     public String userBook(){
@@ -68,11 +97,5 @@ public class UserController {
     }
 
 
-
-
-    public User getUserById(@PathVariable Integer id){
-        User user = userService.getUserById(id);
-        return user;
-    }
 
 }

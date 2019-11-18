@@ -36,9 +36,12 @@
 
       <p style="color: orangered;" th:text="${msg}" th:if="${ not #strings.isEmpty(msg)}"></p>
 
+
+      <p style="color: greenyellow;" th:text="${success}" th:if="${ not #strings.isEmpty(success)}"></p>
+
       <label for="inputEmail" class="sr-only">Email address</label>
       <input type="email" name="username" id="inputEmail" class="form-control" placeholder="Email address"
-             th:value="${username}" required autofocus>
+             th:value="(${User}) ? ${User.username} : '' " required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" name="psw" id="inputPassword" class="form-control" placeholder="Password" required>
       <div class="checkbox mb-3">
@@ -47,8 +50,8 @@
         </label>
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit" style="background-color: #ff545a; border-color: #ff545a;">登录</button>
-	  <a class="btn btn-default btn-sm" href="sign_up.html" target="_self" style="">立即注册</a>
-	  <a class="btn btn-default btn-sm" href="../index.html" target="_self" style="padding-bottom: 5px;" >返回首页</a>
+	  <a class="btn btn-default btn-sm" href="sign_up.html" th:href="@{/user/sign_up}" target="_self" style="">立即注册</a>
+	  <a class="btn btn-default btn-sm" href="../index.html" th:href="@{/index}" target="_self" style="padding-bottom: 5px;" >返回首页</a>
       <p class="mt-5 mb-3 text-muted">&copy; 2019 Booking Team</p>
     </form>
   </body>
