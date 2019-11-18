@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 @RequestMapping("usertest")
 public class UserTest {
@@ -15,8 +17,10 @@ public class UserTest {
     UserService userService;
 
     @RequestMapping("/{id}")
-    public User getUserById(@PathVariable Integer id){
+    public User getUserById(@PathVariable Integer id, HttpSession session){
         User user = userService.getUserById(id);
+        session.setAttribute("loginUser",user);
+
         return user;
     }
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
 
     <head>
         <!-- meta data -->
@@ -7,44 +7,41 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-		<link rel="stylesheet" href="assets/css/mycss/index.css" />
-		<link href="assets/css/mycss/index.css" />
+		<link rel="stylesheet" href="assets/css/mycss/index.css" th:href="@{assets/css/mycss/index.css}"/>
         <!--font-family-->
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
         
         <!-- title of site -->
         <title>Booking民航订票</title>
 
-        <!-- For favicon png -->
-		<link rel="shortcut icon" type="image/icon" href="assets/logo/favicon.png"/>
        
         <!--font-awesome.min.css-->
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css" th:href="@{assets/css/font-awesome.min.css}">
 
         <!--linear icon css-->
-		<link rel="stylesheet" href="assets/css/linearicons.css">
+		<link rel="stylesheet" href="assets/css/linearicons.css" th:href="@{assets/css/linearicons.css}">
 
 		<!--animate.css-->
-        <link rel="stylesheet" href="assets/css/animate.css">
+        <link rel="stylesheet" href="assets/css/animate.css" th:href="@{assets/css/animate.css}">
 
 		<!--flaticon.css-->
-        <link rel="stylesheet" href="assets/css/flaticon.css">
+        <link rel="stylesheet" href="assets/css/flaticon.css" th:href="@{assets/css/flaticon.css}">
 
 		<!--slick.css-->
-        <link rel="stylesheet" href="assets/css/slick.css">
-		<link rel="stylesheet" href="assets/css/slick-theme.css">
+        <link rel="stylesheet" href="assets/css/slick.css" th:href="@{assets/css/slick.css}">
+		<link rel="stylesheet" href="assets/css/slick-theme.css" th:href="@{assets/css/slick-theme.css}">
 		
         <!--bootstrap.min.css-->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css" th:href="@{assets/css/bootstrap.min.css}">
 		
 		<!-- bootsnav -->
-		<link rel="stylesheet" href="assets/css/bootsnav.css" >	
+		<link rel="stylesheet" href="assets/css/bootsnav.css" th:href="@{assets/css/bootsnav.css}">
         
         <!--style.css-->
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/style.css" th:href="@{assets/css/style.css}">
         
         <!--responsive.css-->
-        <link rel="stylesheet" href="assets/css/responsive.css">
+        <link rel="stylesheet" href="assets/css/responsive.css" th:href="@{assets/css/responsive.css}">
         
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -65,7 +62,9 @@
 		<!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
-		
+
+
+
 		<!--header-top start -->
 		<header id="header-top" class="header-top">
 			<ul>
@@ -92,18 +91,24 @@
 						</ul>
 					</div>
 				</li>
-				<li class="head-responsive-right pull-right">
-					<div class="header-top-right">
-						<ul>
+
+				<li class="head-responsive-right pull-right" style="text-transform: none">
+					<div class="header-top-right" style="text-transform: none">
+						<ul style="text-transform: none">
 							<li class="header-top-contact">
 								<span class="glyphicon glyphicon-user"> </span>
-								<a href="userInfo.html">未登录</a>
+								<!--<span th:text="${session.getAttribute(user)}"></span>-->
+								<!--<a href="userInfo.html" th:text="${user.username}" th:if="${not #strings.isEmpty(user.username)}">未登录</a>-->
+								<a th:href="@{user/sign}" th:text="(${session.loginUser}) ? ${session.loginUser.nickname} : '未登录' ">未登录</a>
+
 							</li>
 							<li class="header-top-contact">
-								<a href="sign_in.html">sign in</a>
+								<a th:href="@{user/logout}" th:if="(${session.loginUser})">sign out</a>
+								<a th:href="@{user/sign}" th:if="!(${session.loginUser})">sign in</a>
 							</li>
+
 							<li class="header-top-contact">
-								<a href="sign_up.html">register</a>
+								<a th:href="@{register}">register</a>
 							</li>
 						</ul>
 					</div>
@@ -188,13 +193,13 @@
 							</div>
 							<div class="col-md-3">
 								<fieldset>
-								    <label for="departure" class="text-left">Departure date:</label>
-								    <input name="deparure" type="date" class="form-control date" id="deparure" placeholder="Select date..." required="" onchange='this.form.()'>
+								    <label for="departure" class="text-left">出发时间:</label>
+								    <input name="deparure" type="date" class="form-control date" id="departure" placeholder="Select date..." required="" onchange='this.form.()'>
 								</fieldset>
 							</div>
 							<div class="col-md-3">
 								<fieldset class="text-right">
-								    <label for="return" class="text-left">Return date:</label>
+								    <label for="return" class="text-left">返回时间:</label>
 								    <input disabled="true" name="return" type="date" class="form-control" id="return" placeholder="Select date..." required="" onchange='this.form.()'>
 								</fieldset>
 							</div>
@@ -821,6 +826,8 @@
 					document.getElementById("Layer2").style.display = "none"; 
 				} 
 		</script>
+
+
 		<script src="assets/js/jquery.js"></script>
         
         <!--modernizr.min.js-->

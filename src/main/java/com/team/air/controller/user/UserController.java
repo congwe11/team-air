@@ -4,12 +4,17 @@ import com.team.air.bean.User;
 import com.team.air.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.thymeleaf.util.StringUtils;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
@@ -21,10 +26,9 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping("/sign")
-    public String user(){
-        return prefile + "sign_in";
-    }
+
+
+
 
     @PostMapping("/login")
     public String login(@RequestParam("username") String username, @RequestParam("psw") String psw,
@@ -41,13 +45,27 @@ public class UserController {
             return prefile + "sign_in";
         }else {
             //登录成功
-
             session.setAttribute("loginUser",user);
-            return "redirect:/index.html";
+            session.setAttribute("username",user.getUsername());
+            System.out.println(user);
+            System.out.println(user.getUsername());
+            return "redirect:/index";
         }
     }
 
+    @RequestMapping("/logout")
+    public String sighOut(HttpServletRequest request, HttpServletResponse response){
+        request.getSession().removeAttribute("loginUser");
+        request.getSession().invalidate();
+        return "redirect:/index";
+    }
 
+
+
+    @RequestMapping("/book")
+    public String userBook(){
+        return "orderBook";
+    }
 
 
 

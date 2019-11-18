@@ -34,31 +34,37 @@
 				<h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
 			</div>
 			<div class="d2">
-				<form class="form-horizontal">
+				<form class="form-horizontal" >
 				  <!-- 账号 -->
 				  <div class="form-group">
-					  <label for="inputUsername" class="col-md-2 control-label">Username</label>
+					  <label for="inputUsername" class="col-md-2 control-label">用户名邮箱</label>
 					  <div class="col-md-10">
-						<input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+						<input type="email" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
 					  </div>
 				  </div>
 				 <!-- 密码 -->
 				 <div class="form-group">
-				 		  <label for="inputPassword" class="col-md-2 control-label">Password</label>
+				 		  <label for="inputPassword" class="col-md-2 control-label">密码</label>
 				 		  <div class="col-md-10">
 				 			<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
 				 		  </div>
 				 </div>
+				 <div class="form-group">
+						<label for="confirmPassword" class="col-md-2 control-label">确认密码</label>
+						<div class="col-md-10">
+							<input type="password" id="confirmPassword" class="form-control" placeholder="Password" required>
+						</div>
+				 </div>
 				 <!-- 昵称 -->
 				 <div class="form-group">
-				 		  <label for="nickName" class="col-md-2 control-label">Nickname</label>
+				 		  <label for="nickName" class="col-md-2 control-label">昵称</label>
 				 		  <div class="col-md-10">
 				 			<input type="password" id="nickName" class="form-control" placeholder="昵称" required>
 				 		  </div>
 				 </div>
 				<!-- 性别 -->
 				<div class="form-group">
-						  <label for="sex" class="col-md-2 control-label">Sex</label>
+						  <label class="col-md-2 control-label">性别</label>
 						  <div class="col-md-4 text-left" style="padding-top: 7px;">
 							<input type="radio" class="form-check-input" value="1" name="singl" checked="checked">男
 							&nbsp;&nbsp;&nbsp;&nbsp;
@@ -67,14 +73,14 @@
 				</div>
 				<!-- 电话 -->
 				<div class="form-group">
-						  <label for="imputTel" class="col-md-2 control-label">Tel</label>
+						  <label for="inputTel" class="col-md-2 control-label">电话</label>
 						  <div class="col-md-10">
-							 <input type="tel" id="inputTel" class="form-control" placeholder="电话" />
+							 <input id="inputTel" type="tel" id="inputTel" class="form-control" placeholder="电话" />
 						  </div>
 				</div>
 				<!-- 身份证号 -->
 				<div class="form-group">
-						  <label for="inputIdNumber" class="col-md-2 control-label">IdNumber</label>
+						  <label for="inputIdNumber" class="col-md-2 control-label">居民身份证号</label>
 						  <div class="col-md-10">
 							 <input type="text" id="inputIdNumber" class="form-control" min="18" max="18" placeholder="130627199611122633"/>
 						  </div>
@@ -87,14 +93,14 @@
 					</div>
 					<div class="col-md-6">
 						
-						<a href="sign_in.html" class="btn btn-lg btn-primary btn-block">返回登录</a>
+						<a href="/sign" class="btn btn-lg btn-primary btn-block">返回登录</a>
 					<!-- <button class="btn btn-lg btn-primary btn-block col-md-2" type="submit" style="background-color: #ff545a; border-color: #ff545a;">
 						返回主页
 					</button> -->
 					</div>
 				</div>
-				
 				</form>
+
 			</div>
 		
 		</div>
