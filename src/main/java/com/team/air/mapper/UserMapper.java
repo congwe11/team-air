@@ -1,10 +1,7 @@
 package com.team.air.mapper;
 
 import com.team.air.bean.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface UserMapper {
@@ -22,4 +19,12 @@ public interface UserMapper {
 
     @Select("SELECT count(*) FROM user")
     public int countUser();
+
+    //修改个人信息
+    @Update("UPDATE user set nickname=#{nickname},numbers=#{numbers},address=#{address} WHERE user_id=#{user_id}")
+    public int updateUser(User user);
+
+    //修改密码
+    @Update("UPDATE user set psw=#{psw} WHERE user_id=#{user_id}")
+    public int updatePsw(User user);
 }

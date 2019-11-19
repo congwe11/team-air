@@ -6,12 +6,7 @@ import com.team.air.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,10 +21,8 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @Autowired
-    UserMapper userMapper;
 
-
+    //用户登录
     @PostMapping("/login")
     public String login(@RequestParam("username") String username, @RequestParam("psw") String psw,
                         Map<String,Object> map, HttpSession session){
@@ -44,15 +37,15 @@ public class UserController {
             map.put("msg","密码不正确！请重新输入");
             return prefile + "sign_in";
         }else {
-            //登录成功
+            //登录成功，并将用户信息存入session
             session.setAttribute("loginUser",user);
-            session.setAttribute("username",user.getUsername());
             System.out.println(user);
             System.out.println(user.getUsername());
             return "redirect:/index";
         }
     }
 
+    //用户登出
     @RequestMapping("/logout")
     public String sighOut(HttpServletRequest request, HttpServletResponse response){
         request.getSession().removeAttribute("loginUser");
@@ -73,7 +66,7 @@ public class UserController {
         if (userService.getUserByUsername(user.getUsername()) == null){
             //用户名可用，保存用户，返回登录页面
             //用户id自己获取用户总数+1
-            int id = userMapper.countUser();
+            int id = userService.countUser();
             user.setUser_id(id+1);
 
             //保存到数据库
@@ -89,6 +82,39 @@ public class UserController {
             model.addAttribute("error","该用户名已存在！请重新输入");
             return prefile+"sign_up";
         }
+    }
+
+    @RequestMapping("/info")
+    public String UserInfo(){
+
+        System.out.println("进入个人信息页面----------------------》》》》");
+        return prefile + "userInfo";
+    }
+
+    //用户修改个人信息
+    @GetMapping("/upUserInfo")
+    public String updateUserInfo(Model model,User user,HttpSession session){
+
+        System.out.println(user.toString());
+        userService.updateUser(user);
+        //更新用户信息后，重新加载更新后的用户信息
+        User newUser = userService.getUserById(user.getUser_id());
+        session.setAttribute("loginUser",newUser);
+        model.addAttribute("success","个人信息修改成功！");
+        return prefile + "userInfo";
+    }
+
+    //用户修改密码
+    @PostMapping("/upPsw")
+    public String updatePsw(Model model,User user,HttpServletRequest request){
+
+        System.out.println(user.toString());
+        userService.updatePsw(user);
+        model.addAttribute("success","密码修改成功！请重新登录！");
+//        修改密码后，注销用户重新登录
+        request.getSession().removeAttribute("loginUser");
+        request.getSession().invalidate();
+        return prefile + "sign_in";
     }
 
     @RequestMapping("/book")

@@ -34,10 +34,10 @@
       <img class="mb-4" src="../../static/assets/img/login.svg" th:src="@{/assets/img/login.svg}" alt="" width="80" height="80">
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 
-      <p style="color: orangered;" th:text="${msg}" th:if="${ not #strings.isEmpty(msg)}"></p>
+      <p id="loginInfo" style="color: orangered;" th:text="${msg}" th:if="${ not #strings.isEmpty(msg)}"></p>
 
 
-      <p style="color: greenyellow;" th:text="${success}" th:if="${ not #strings.isEmpty(success)}"></p>
+      <p id="successInfo" style="color: green;" th:text="${success}"></p>
 
       <label for="inputEmail" class="sr-only">Email address</label>
       <input type="email" name="username" id="inputEmail" class="form-control" placeholder="Email address"
@@ -54,5 +54,16 @@
 	  <a class="btn btn-default btn-sm" href="../index.html" th:href="@{/index}" target="_self" style="padding-bottom: 5px;" >返回首页</a>
       <p class="mt-5 mb-3 text-muted">&copy; 2019 Booking Team</p>
     </form>
+
+  <script type="text/javascript">
+      window.onload = function () {
+        re = document.getElementById("successInfo").innerText;
+        if ( re != "")
+        {
+            window.alert(re);
+        }
+      }
+
+  </script>
   </body>
 </html>

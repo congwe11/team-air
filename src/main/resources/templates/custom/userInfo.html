@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<title>用户个人信息页面</title>
+		<!-- <link rel="stylesheet" href="assets/css/style.css"/> -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css" th:href="@{/assets/css/bootstrap.min.css}" />
+		<link rel="stylesheet" href="assets/css/mycss/user.css" th:href="@{/assets/css/mycss/user.css}"/>
+	</head>
+	<style>
+		
+	</style>
+	<body>
+		<header id="header-top" class="header-top">
+			<ul>
+				<li>
+					<div class="header-top-left">
+						<ul>
+							<li class="select-opt">
+								<select name="language" id="language">
+									<option value="default">CN</option>
+									<option value="Bangla">EN</option>
+									
+								</select>
+							</li>
+							<li class="select-opt">
+								<select name="currency" id="currency">
+									<option value="usd">USD</option>
+									<option value="euro">Euro</option>
+									<option value="bdt">RMB</option>
+								</select>
+							</li>
+							<li class="select-opt">
+								<a href="#"><span class="lnr lnr-magnifier"></span></a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="head-responsive-right pull-right">
+					<div class="header-top-right">
+						<ul>
+							<li class="header-top-contact">
+								<span class="glyphicon glyphicon-user"> </span>
+								<a th:href="@{user/info}" th:text="${session.loginUser.nickname}">用户名</a>
+							</li>
+							<li class="header-top-contact">
+								<a th:href="@{user/logout}">sign out</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+			
+		</header><!--/.header-top-->
+		<section class="navbar">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="d1 col-md-10 col-md-offset-1" style="padding-left: 30px;">
+						<ol class="breadcrumb">
+						  <li><a href="index.html">首页</a></li> 
+						  <li class="active">我的信息</li>
+						</ol>
+					</div>
+					<nav class="col-md-2 col-md-offset-1 sidebar">
+						<div class="sidebar-sticky">
+							<ul class="nav nav-pills nav-stacked">
+							  <li role="presentation" class="active"><a>个人信息</a></li>
+							  <li role="presentation"><a href="userOrder.html">我的订单</a></li>
+							  
+							</ul>
+						</div>
+					</nav>
+					
+					<div class="col-md-6 col-md-offset-1">
+						<div class="main" >
+
+
+							<div class="d1 text-center">
+								<form class="form-horizontal" th:action="@{/user/upUserInfo}" method="get" style="border-bottom: 1px solid #7B8088;">
+								<h4>修改个人信息</h4><br />
+									<p id="successInfo" style="color: green;" th:text="${success}"></p>
+									<input type="hidden" th:value="${session.loginUser.user_id}" name="user_id" />
+								  <!-- 账号 -->
+								  <div class="form-group">
+									  <label for="inputUsername" class="col-md-2 control-label">Username</label>
+									  <div class="col-md-10">
+										<input th:value="${session.loginUser.username}" disabled="" type="text" id="inputUsername" class="form-control" value="neverBro@163.com">
+									  </div>
+								  </div>
+								 
+								 <!-- 昵称 -->
+								 <div class="form-group">
+								 		  <label for="nickName" class="col-md-2 control-label">昵称</label>
+								 		  <div class="col-md-10">
+								 			<input th:value="${session.loginUser.nickname}" name="nickname" type="text" id="nickName" class="form-control" placeholder="昵称" required>
+								 		  </div>
+								 </div>
+								
+								<!-- 电话 -->
+								<div class="form-group">
+										  <label for="inputTel" class="col-md-2 control-label">Tel</label>
+										  <div class="col-md-10">
+											 <input th:value="${session.loginUser.numbers}" name="numbers" type="tel" id="inputTel" class="form-control" placeholder="18731192620" value=""/>
+										  </div>
+								</div>
+								<!-- 身份证号 -->
+								<div class="form-group">
+										  <label for="address" class="col-md-2 control-label">居住地址</label>
+										  <div class="col-md-10">
+											 <input th:value="${session.loginUser.address}" name="address" type="text" id="address" class="form-control" placeholder="石家庄"/>
+										  </div>
+								</div>
+								<div class="form-group  col-md-6 col-md-push-2">
+									<button class="btn btn-primary btn-block " type="submit" style="">
+										确认修改
+									</button>
+								</div>
+								<br />
+								<br />
+								<br />
+								</form>
+							</div>
+							<div class="row d2 text-center">
+								<form th:action="@{/user/upPsw}" method="post" class="form-horizontal">
+									<br />
+									<h4>修改密码</h4>
+									<br />
+
+									<input  name="user_id" type="hidden" th:value="${session.loginUser.user_id}" />
+									<input id="userPsw" name="userPsw" type="hidden" th:value="${session.loginUser.psw}">
+									<!-- 密码 -->
+									<div class="form-group">
+										<label for="oldpsw" class="col-md-2 control-label">原密码</label>
+										<div class="col-md-10">
+											<input name="oldPsw" type="password" id="oldPsw" class="form-control" placeholder="Password" required>
+										</div>
+									</div>
+									<div id="confirm1" style="">
+										<p id="errorInfo1" style="color: red;" th:text="${error}"></p>
+									</div>
+									<div class="form-group">
+										<label for="confirmPsw" class="col-md-2 control-label">新密码</label>
+										<div class="col-md-10">
+											<input name="psw" type="password" id="newPsw" class="form-control" placeholder="Confirm Password" required>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="confirmPsw" class="col-md-2 control-label">确认新密码</label>
+										<div class="col-md-10">
+											<input name="confirmPsw" type="password" id="confirmPsw" class="form-control" placeholder="Confirm Password" required>
+										</div>
+									</div>
+									<!--密码验证信息-->
+									<div id="confirm" style="">
+										<p id="errorInfo" style="color: red;" th:text="${error}"></p>
+
+									</div>
+
+									<div class="form-group  col-md-6 col-md-push-2">
+										<button class="btn btn-primary btn-block " type="submit" onclick="return validate()">
+											确认修改
+										</button>
+									</div>
+								</form>
+								
+							</div>	
+						</div>
+					
+					
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<script type="text/javascript">
+			function validate(){
+				var word1 = document.getElementById("oldPsw").value;
+				var word2 = document.getElementById("confirmPsw").value;
+				var word3 = document.getElementById("userPsw").value;
+				var word4 = document.getElementById("newPsw").value;
+				if (word3 != word1){
+
+					window.alert("原密码输入错误，请重新输入!");
+					oldPsw.focus();
+					return false;
+				}
+				else if(word4 != word2){
+
+					window.alert("两次输入的密码不一致，请重新输入!");
+					confirmPsw.focus();
+					return false;
+				}else {
+					document.getElementById("errorInfo1").innerText = "";
+					document.getElementById("errorInfo").innerText = "";
+					return true;
+				}
+
+			}
+
+			oldPsw.onblur = function(){
+
+				if(oldPsw.value != userPsw.value){
+					document.getElementById("errorInfo1").innerText = "与原密码不一致，请重新输入！";
+
+				}else{
+					document.getElementById("errorInfo1").innerText = "";
+
+				}
+			}
+			confirmPsw.onblur = function(){
+
+				if(confirmPsw.value != newPsw.value){
+					document.getElementById("errorInfo").innerText = "两次密码输入不一致，请重新输入！";
+				}else{
+					document.getElementById("errorInfo").innerText = "";
+				}
+			}
+
+
+		</script>
+	</body>
+</html>

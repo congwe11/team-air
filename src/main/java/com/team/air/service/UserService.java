@@ -11,6 +11,19 @@ public class UserService {
     @Autowired
     UserMapper userMapper;
 
+
+    public int countUser(){
+        return userMapper.countUser();
+    }
+
+    public int updatePsw(User user){
+        return userMapper.updatePsw(user);
+    }
+
+    public int updateUser(User user){
+        return userMapper.updateUser(user);
+    }
+
     public User getUserById(Integer id){
         System.out.println("查询用户:"+id);
         User user = userMapper.getUserByid(id);
