@@ -99,7 +99,7 @@
 								<span class="glyphicon glyphicon-user"> </span>
 								<!--<span th:text="${session.getAttribute(user)}"></span>-->
 								<!--<a href="userInfo.html" th:text="${user.username}" th:if="${not #strings.isEmpty(user.username)}">未登录</a>-->
-								<a th:href="@{user/info}" th:text="(${session.loginUser}) ? ${session.loginUser.nickname} : '未登录' ">未登录</a>
+								<a th:href="@{user/selfInfo}" th:text="(${session.loginUser}) ? ${session.loginUser.nickname} : '未登录' ">未登录</a>
 
 							</li>
 							<li class="header-top-contact">
@@ -128,9 +128,9 @@
 
 			            <!-- Start Header Navigation -->
 			            <div class="navbar-header">
-							<a class="navbar-brand" href="index.html"><span>Book</span>ing</a>
+							<a class="navbar-brand"><span>Book</span>ing</a>
 							<ul class="navbar-left" style="padding: 34px 45px;">
-								<li><a class="" href="flightInfo.html">订票</a></li>
+								<li><a class="" th:href="@{user/airlist}">订票</a></li>
 							</ul>
 			                
 							

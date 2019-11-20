@@ -84,12 +84,6 @@ public class UserController {
         }
     }
 
-    @RequestMapping("/info")
-    public String UserInfo(){
-
-        System.out.println("进入个人信息页面----------------------》》》》");
-        return prefile + "userInfo";
-    }
 
     //用户修改个人信息
     @GetMapping("/upUserInfo")

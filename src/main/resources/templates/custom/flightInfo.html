@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="航班详情页面">
+		<title>航班详情页面</title>
+		<link rel="stylesheet" href="assets/css/style.css" th:href="@{/assets/css/style.css}" />
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css" th:href="@{/assets/css/bootstrap.min.css}" />
+		<link rel="stylesheet" href="assets/css/font-awesome.min.css" th:href="@{/assets/css/font-awesome.min.css}">
+		<style>
+			body{
+				background: #F7F7F7;
+			}
+			.navbar-left,.navbar-right{
+				padding: 34px 45px;
+				margin: 0;
+			}
+			.nav1{
+				display: inline-block;
+				padding: 0 40px;
+			}
+			.nav1 a{
+				text-decoration: none;	
+				color: #859098;
+			}
+			.nav1 a:hover{
+				color: #ff545a;
+			}
+			.nav2{
+				display: inline-block;
+				padding: 0 15px;
+				
+			}
+			.nav2 a{
+				text-decoration: none;	
+				color: #859098;
+				font-size: 12px;
+			}
+			.navbar{
+				    box-shadow: 0 0 25px #ccc;
+			}
+			.list ul li{
+				position: relative;
+				    float: left;
+				    width: 287px;
+				    height: 128px;
+				    font-size: 20px;
+				    text-align: center;
+					padding: 0;
+					margin-bottom: 30px;
+			}
+			.list ul li a{
+				color: #333;
+				display: block;
+				margin-top: 14px;
+				border-right: 1px dashed #ddd;
+				text-decoration: none;
+			}
+			.list ul li a:hover{
+				color: #ff545a;
+			}
+			
+			.list ul li a p span{
+				color: #faa701;
+			}
+			.list ul li a .arrival{
+				font-size: 20px;
+			}
+			.list ul li a p{
+				font-size: 45px;
+			}
+			.d1{
+				height: 400px;
+				overflow: hidden;
+				padding: 0 25px;
+				position: relative;
+				
+				background: white; margin-top: 20px; box-shadow: 0 0 20px #e9eaed;
+			}
+			.d1{
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<section class="nav-area">
+			<div class="header-area">
+				<!-- Start Navigation -->
+			    <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy" style="height: 80px;background: white;" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+		
+			        <div class="container">
+		
+			            <!-- Start Header Navigation -->
+			            <div class="navbar-header">
+							<a class="navbar-brand" href="../index.html"><span>Book</span>ing</a>
+							<ul class="navbar-left" style="">
+								<li class="nav1"><a th:href="@{/index}">首页</a></li>
+								<li class="nav1"><a style="color: #ff545a;">订票</a></li>
+							</ul>
+							
+			            </div><!--/.navbar-header-->
+			            <!-- End Header Navigation -->
+		
+			            <!-- Collect the nav links, forms, and other content for toggling -->
+			            <div class="" id="navbar-menu">
+			                <ul class="navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+			                    
+								<li class="nav2">
+									<span class="glyphicon glyphicon-user">&nbsp;</span>
+									<a th:href="@{../user/selfInfo}" th:text="(${session.loginUser}) ? ${session.loginUser.nickname} : '未登录' ">未登录</a>
+								</li>
+								<li class="nav2">
+									<a th:href="@{../user/logout}" th:if="(${session.loginUser})">sign out</a>
+									<a th:href="@{../user/sign}" th:if="!(${session.loginUser})">sign in</a>
+								</li>
+			                    
+			                </ul><!--/.nav -->
+			            </div><!-- /.navbar-collapse -->
+			        </div><!--/.container-->
+			    </nav><!--/nav-->
+			    <!-- End Navigation -->
+			</div><!--/.header-area-->
+		</section><!-- /.top-area-->
+		
+		
+		<section class="content">
+			<div class="container">
+				<div class="row " style="height: 120px; background: white; margin-top: 20px; box-shadow: 0 0 20px #e9eaed;">
+					<div class="form-flight" style="margin: 20px;">
+						<form id="" action="" method="get" >
+							<div class="col-md-2" style="padding-right: 0;">
+								<fieldset>
+								    <label for="origin" class="text-left">出发地:</label>
+								    <input name="origin" type="text" class="form-control" id="origin" value="石家庄" placeholder="ex: 石家庄" required="">
+								</fieldset>
+								
+							</div>
+							
+							<div class="col-md-1" onclick="exchange()" style="padding: 0; margin-top: 10px; text-align: center;">
+								<br />
+								<span class="glyphicon glyphicon-resize-horizontal"></span>
+								
+							</div>
+							<div class="col-md-2" style="padding-left: 0;">
+								<fieldset>
+								    <label for="destination" class="text-left">目的地:</label>
+								    <input name="destination" type="text" class="form-control" id="destination" placeholder="ex: 上海" required="">
+								</fieldset>
+							</div>
+							<div class="col-md-4">
+								<fieldset>
+								    <label for="departure" class="text-left">出发日期:</label>
+								    <input name="deparure" type="date" class="form-control date" id="departure" placeholder="Select date..." required="" onchange='this.form.()'>
+								</fieldset>
+							</div>
+							
+							<div class="col-md-2 col-sm-offset-1">
+									<br />
+								    <input name="search" type="submit" class="btn btn-default " id="search" value="&nbsp;搜&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;索&nbsp;"
+									 style="border-color: #ff545a; margin-top: 4px;"/>
+							</div>
+						</form>
+					</div>
+				</div>
+				
+				<div class="row d1" style="">
+					<p id="originName" style="margin: 10px 0 0 20px;">出发地：</p>
+					<hr style="margin-top: 10px;"/>
+					<div class="list tab-content" >
+						<ul>
+							<li class="col-md-3" th:each="air:${flights}">
+								<a href="flightDetails.html" target="_blank">
+									<p class="price">
+										<span>￥[[${air.price}]]</span>
+									</p>
+									<div class="arrival">
+										[[${air.origin}]] <span class="glyphicon glyphicon-plane"></span>
+										[[${air.destination}]]
+									</div>
+								</a>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+
+		
+			</div>
+		</section>
+
+		
+		<!--footer start-->
+		<footer style="margin-top: 30px;">
+			<div class="container">
+				
+				<div class="hm-footer-copyright">
+					<div class="row">
+						<div class="col-sm-5">
+							
+							<p>
+								&copy;copyright. master never team；
+							</p><!--/p-->
+						</div>
+						<div class="col-sm-7">
+							<div class="footer-social">
+								<span><span><i class="fa fa-bath" aria-hidden="true">  +与作者取得联系</i></span></span>
+								<span><i class="fa fa-phone"> +86  187 3119 xxxx</i></span>
+								<div id="Layer1" style="display:none; position: absolute; left:440px ; top: -114px; z-index: 100;">
+									<img width="100" height="100" src="assets/img/myQQ.jpg" />
+								</div>
+								<a onmouseout="hiddenPic();" onmousemove="showPic();"><i class="fa fa-qq"></i></a>	
+								<!-- <img src="assets/img/myQQ.jpg" width="50" height="50" /> -->
+								<div id="Layer2" style="display:none; position: absolute; left:490px ; top: -104px; z-index: 100;">
+									<img width="100" height="100" src="assets/img/myWechat.jpg" />
+								</div>
+								<a onmouseout="hiddenPic2();" onmousemove="showPic2();"><i class="fa fa-wechat"></i></a>
+								<a href="https://twitter.com/?lang=zh-cn"><i class="fa fa-twitter"></i></a>
+								<a href="https://www.google.com/"><i class="fa fa-google-plus"></i></a>
+							</div>
+						</div>
+					</div>
+					
+				</div><!--/.hm-footer-copyright-->
+			</div><!--/.container-->
+		</footer><!--/.footer-->
+		<!--footer end-->
+		
+		<script language="JavaScript">
+
+
+			function exchange(){
+				
+				var num1 = document.getElementById("origin").value;
+				var num2 = document.getElementById("destination").value; 
+				{
+					document.getElementById("origin").value = num2;
+					document.getElementById("destination").value = num1;
+				}
+				}
+			function showPic(){
+				
+					document.getElementById("Layer1").style.display = ""; 
+				} 
+			function hiddenPic(){ 
+					
+					document.getElementById("Layer1").style.display = "none"; 
+				} 
+			function showPic2(){
+				
+					document.getElementById("Layer2").style.display = ""; 
+				} 
+			function hiddenPic2(){ 
+					
+					document.getElementById("Layer2").style.display = "none"; 
+				} 
+		</script>
+		
+	</body>
+</html>

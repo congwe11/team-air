@@ -1,5 +1,13 @@
 package com.team.air.bean;
 
 public class SeatType {
-    private String seatType;
+    private Integer seatType;
+
+    public Integer getSeatType() {
+        return seatType;
+    }
+
+    public void setSeatType(Integer seatType) {
+        this.seatType = seatType;
+    }
 }

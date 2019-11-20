@@ -6,17 +6,19 @@
 </head>
 <body>
 
-<h1 th:text="${session.loginUser.getNickname()}">
+<ul>
+    <li th:each="air:${flights}">
+        <!--<b th:text="${air.origin}"> </b>-->
+        [[${air.origin}]]
+        [[${air.destination}]]
 
-</h1>
-<h1 th:text="${session.loginUser.nickname}">
+        <span>￥ [[${air.price}]] </span>
+    </li>
 
-</h1>
-<h1 th:text="${session.loginUser.username}">
 
-</h1>
+</ul>
 
-<h1 th:text="${session.username}">
+<!--<h1 th:text="${session.username}">-->
 
 </h1>
 </body>

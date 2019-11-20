@@ -41,10 +41,10 @@
 						<ul>
 							<li class="header-top-contact">
 								<span class="glyphicon glyphicon-user"> </span>
-								<a th:href="@{user/info}" th:text="${session.loginUser.nickname}">用户名</a>
+								<a th:text="${session.loginUser.nickname}">用户名</a>
 							</li>
 							<li class="header-top-contact">
-								<a th:href="@{user/logout}">sign out</a>
+								<a href="user/logout" th:href="@{../user/logout}">sign out</a>
 							</li>
 						</ul>
 					</div>
@@ -57,7 +57,7 @@
 				<div class="row">
 					<div class="d1 col-md-10 col-md-offset-1" style="padding-left: 30px;">
 						<ol class="breadcrumb">
-						  <li><a href="index.html">首页</a></li> 
+						  <li><a th:href="@{/index}">首页</a></li>
 						  <li class="active">我的信息</li>
 						</ol>
 					</div>
@@ -66,7 +66,6 @@
 							<ul class="nav nav-pills nav-stacked">
 							  <li role="presentation" class="active"><a>个人信息</a></li>
 							  <li role="presentation"><a href="userOrder.html">我的订单</a></li>
-							  
 							</ul>
 						</div>
 					</nav>

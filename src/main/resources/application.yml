@@ -1,6 +1,6 @@
-server:
-  servlet:
-    context-path: /air
+#server:
+#  servlet:
+#    context-path: /air
 
 
 spring:

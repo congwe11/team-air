@@ -16,13 +16,20 @@ public class MyMvcConfig {
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
 
+                //主页url映射
                 registry.addViewController("/").setViewName("index");
                 registry.addViewController("/index").setViewName("index");
                 registry.addViewController("/index.html").setViewName("index");
+                //登录页面
                 registry.addViewController("/user").setViewName("custom/sign_in");
+                registry.addViewController("/user/").setViewName("custom/sign_in");
                 registry.addViewController("/user/sign").setViewName("custom/sign_in");
+                //注册页面
                 registry.addViewController("/user/sign_up").setViewName("custom/sign_up");
-                registry.addViewController("user/selfInfo").setViewName("custom/userInfo");
+                //用户个人信息页面
+                registry.addViewController("/user/selfInfo").setViewName("custom/userInfo");
+                //航班信息列表页面
+                registry.addViewController("/book/airline").setViewName("custom/flightInfo");
 
 
                 registry.addViewController("/index_text").setViewName("index_text");
