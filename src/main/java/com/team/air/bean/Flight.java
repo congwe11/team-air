@@ -1,5 +1,7 @@
 package com.team.air.bean;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 //航班
@@ -8,7 +10,10 @@ public class Flight {
     private Integer flight_id;
     private String origin;
     private String destination;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date start_time;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date end_time;
     private Integer status;
     private Double price;

@@ -32,6 +32,7 @@ public class MyMvcConfig {
                 registry.addViewController("/book/airline").setViewName("custom/flightInfo");
 
 
+
                 registry.addViewController("/index_text").setViewName("index_text");
             }
 
@@ -41,7 +42,9 @@ public class MyMvcConfig {
                 //静态资源： *.css; *.js;
                 //SpringBoot已经做好了静态资源映射
                 registry.addInterceptor(new LoginHandlerInterceptor())
-                        .addPathPatterns("/book","/user/book","/user/selfInfo","/user/upUserInfo","/user/upPsw");
+                        .addPathPatterns("/book","/user/book","/user/selfInfo","/user/upUserInfo",
+                                "/user/upPsw")
+                        .excludePathPatterns("/book/airline","/book/search");
             }
 
         };

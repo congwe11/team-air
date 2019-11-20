@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<title>机票查询</title>
+		<link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}" />
+		<link rel="stylesheet" th:href="@{/assets/css/mycss/flightDetails.css}" />
+		<link rel="stylesheet" th:href="@{/assets/css/font-awesome.min.css}" >
+		<style>
+		
+		.flight{
+			    height: 118px;
+			    border-bottom: 1px solid #ddd;
+			    box-shadow: 0px 5px 10px -3px rgba(153, 153, 153, 0.3);
+		}
+		.f1{
+			display: table;
+			/* width: 100%; */
+			height: 110px;
+			cursor: pointer;
+			position: relative;
+			
+			border-bottom: 1px solid #ddd;
+			box-shadow: 0 0 20px #e9eaed;
+			}
+		.f-title{
+			    display: table-cell;
+			    width: 178px;
+			    color: #999;
+			    vertical-align: top;
+		}
+		.f-ori{
+			    text-align: right;
+			    width: 145px;
+			    vertical-align: top;
+		}
+		.f-des{
+			vertical-align: top;
+			width: 145px;
+		}
+		.f-time{
+			font-size: 24px;
+			    line-height: 24px;
+			    color: #333;
+			    position: relative;
+			    top: -5px;
+		}
+		.f-time em{
+			    position: relative;
+			    font-weight: normal;
+			    font-style: normal;
+			    font-weight: bold;
+		}
+		.f-airport{
+			font-size: 12px;
+			    color: #666;
+			    margin-top: 6px;
+		}
+		.f-during .f-time{
+			font-size: 12px;
+			    color: #999;
+			    line-height: 12px;
+			    position: relative;
+			    top: 0;
+		}
+		.f-during .f-arrow{
+			    position: relative;
+			    margin: 0 auto 10px;
+			    width: 88px;
+			    height: 16px;
+			    background: #fff;
+		}
+		.f-ori,.f-during,.f-des{
+			margin-top: 30px;
+		}
+		.p-price{
+			    color: #999;
+			    font-size: 14px;
+				margin-top: 30px;
+		}
+		.p-price span em{
+			font-size: 28px;
+			    color: #faa701;
+			    font-weight: bold;
+		}
+		.s-type1{
+			    width: 280px !important;
+			    display: block !important;
+			    float: left;
+			    margin-left: 120px;
+			    margin-top: 20px;
+			    padding: 12px 15px;
+			    margin-bottom: 20px;
+				border: 1px solid #ff545a !important;
+				border-top-width: 5px !important;
+				border-radius: 4px;
+		}
+		.s-type2{
+			width: 280px !important;
+			display: block !important;
+			float: left;
+			margin-left: 10px;
+			margin-top: 20px;
+			padding: 12px 15px;
+			margin-bottom: 20px;
+			border: 1px solid #ff545a !important;
+			border-top-width: 5px !important;
+			border-radius: 4px;
+		}
+		.s-head{
+			width: 255px;
+			    /* width: inherit; */
+			    height: 30px;
+			display: block;
+			    padding-left: 0px !important;
+			    padding-right: 0;
+			    border-bottom: 1px dashed #dfdfdf;
+			    padding-bottom: 7px;
+			    position: relative;
+				vertical-align: middle;
+				    text-align: center;
+		}
+		.s-info ol li{
+			padding: 3px;
+		}
+		.s-info{
+			padding-bottom: 10px;
+			border-bottom: 1px dashed #dfdfdf;
+		}
+		/* footer */
+		.hm-footer-copyright {
+		    padding: 40px 0;
+		    border-top: 1px solid #e1e5eb;
+		}
+		.hm-footer-copyright p,.hm-footer-copyright p a {
+		    color: #a5adb3;
+		    font-size: 14px;
+		    font-weight: 400;
+		    text-transform: capitalize;
+		}
+		.footer-social {text-align: right;}
+		.footer-social .fa-phone:before {
+		    position: relative;
+		    top: 2px;
+		}
+		.footer-social a ,.footer-social span {
+		    display: inline-block;
+		    color: #afb4bf;
+		    font-size: 14px;
+		    margin-left: 15px;
+		    -webkit-transition: .3s; 
+		    -moz-transition:.3s; 
+		    -ms-transition:.3s; 
+		    -o-transition:.3s;
+		    transition: .3s;
+		}
+		.footer-social a {
+		    width: 35px;
+		    height: 35px;
+		    line-height: 35px;
+		    background: #eef2f6;
+		    text-align: center;
+		    border-radius: 50%;
+		}
+		.footer-social span {margin-right:15px;margin-left: 0;color: #a5adb3;}
+		.footer-social span:hover{color: #ff545a;}
+		.footer-social a:hover {background:#ff545a;color: #fff;}
+		
+		
+		.nav-horizontal{
+			border-bottom: 1px solid;position: relative;top: -10px;padding: 0 50px;
+		}
+		</style>
+	</head>
+	<body>
+		<section class="nav-area">
+			<div class="header-area">
+				<!-- Start Navigation -->
+			    <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy" style="height: 80px;background: white;" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+		
+			        <div class="container">
+		
+			            <!-- Start Header Navigation -->
+			            <div class="navbar-header">
+							<a class="navbar-brand" href="index.html"><span>Book</span>ing</a>
+							<ul class="navbar-left" style="">
+								<li class="nav1" style="padding: 0 10px 0 30px; color: #ff545a;">乘机信息</li>
+								<li class="nav1 nav-horizontal" >&nbsp;</li>
+								<li class="nav1" style="padding: 0 10px;  ">添加乘客</li>
+								<li class="nav1 nav-horizontal" >&nbsp;</li>
+								<li class="nav1" style="padding: 0 10px; ">订单支付</li>
+								<li class="nav1 nav-horizontal" >&nbsp;</li>
+								<li class="nav1" style="padding: 0 10px; ">完成</li>
+							</ul>
+							
+			            </div><!--/.navbar-header-->
+			            <!-- End Header Navigation -->
+		
+			            <!-- Collect the nav links, forms, and other content for toggling -->
+			            <div class="" id="navbar-menu">
+			                <ul class="navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+			                    
+								<li class="nav2">
+									<span class="glyphicon glyphicon-user">&nbsp;</span>
+									<a th:href="@{/user/selfInfo}" th:text="(${session.loginUser}) ? ${session.loginUser.nickname} : '未登录' ">未登录</a>
+								</li>
+								<li class="nav2">
+									<a th:href="@{/user/logout}" th:if="(${session.loginUser})">sign out</a>
+									<a th:href="@{/user/sign}" th:if="!(${session.loginUser})">sign in</a>
+								</li>
+			                    
+			                </ul><!--/.nav -->
+			            </div><!-- /.navbar-collapse -->
+			        </div><!--/.container-->
+			    </nav><!--/nav-->
+			    <!-- End Navigation -->
+			</div><!--/.header-area-->
+		</section><!-- /.top-area-->
+		
+		
+		<section >
+			<div class="container">
+				
+				<div class="row " style="height: 120px; background: white; margin-top: 20px; box-shadow: 0 0 20px #e9eaed;">
+					<div class="form-flight" style="margin: 20px;">
+						<form id="" action="" method="get" >
+							<div class="col-md-2" style="padding-right: 0;">
+								<fieldset>
+								    <label for="origin" class="text-left">出发地:</label>
+								    <input name="origin" type="text" class="form-control" id="origin" value="石家庄" placeholder="ex: 石家庄">
+								</fieldset>
+								
+							</div>
+							
+							<div class="col-md-1" onclick="exchange()" style="padding: 0; margin-top: 10px; text-align: center;">
+								<br />
+								<span class="glyphicon glyphicon-resize-horizontal"></span>
+								
+							</div>
+							<div class="col-md-2" style="padding-left: 0;">
+								<fieldset>
+								    <label for="destination" class="text-left">目的地:</label>
+								    <input name="destination" type="text" class="form-control" id="destination" placeholder="ex: 上海">
+								</fieldset>
+							</div>
+							<div class="col-md-4">
+								<fieldset>
+								    <label for="departure" class="text-left">出发日期:</label>
+								    <input name="departure" type="date" class="form-control date" id="departure" placeholder="Select date...">
+								</fieldset>
+							</div>
+							
+							<div class="col-md-2 col-sm-offset-1">
+									<br />
+								    <input name="search" type="submit" class="btn btn-default " id="search" value="&nbsp;搜&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;索&nbsp;"
+									 style="margin-top: 4px;border-color: #ff545a;"/>
+							</div>
+						</form>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-12" style="padding-left: 30px;">
+						<ol class="breadcrumb" style="background-color: #fff; margin: 15px 0;">
+						  <li><a th:href="@{/index}">首页</a></li>
+						  <li><a >机票预定</a></li>
+						  <li class="active">机票</li>
+						</ol>
+					</div>
+				</div>
+				<div class="row ">
+					<div class="col-md-9 f1">
+						<div class="flight">
+							<div class="f-title text-center col-md-3">
+								<div style="margin-top: 20px; font-size: 20px;font-weight: 700;color: #1b1e20; text-align: center;">
+									<span style="">Booking</span>
+								</div>
+								<br />
+								<p>机型 空客 [[${plane.planeName}]]</p>
+							</div>
+							<div class="f-ori col-md-3">
+								<div class="f-time">
+									<em th:text="${#dates.format(flight.start_time,'HH:mm')}"></em>
+								</div>
+								<div class="f-airport" th:text="${flight.origin}"></div>
+							</div>
+							<div class="f-during col-md-2 text-center">
+								<div class="f-time">2小时 20分</div>
+								<div class="f-arrow">
+									<i class="fa fa-long-arrow-right fa-3x" aria-hidden="true"></i>
+								</div>
+								
+							</div>
+							<div class="f-des col-md-3">
+								<div class="f-time">
+									<em th:text="${#dates.format(flight.end_time,'HH:mm')}"></em>
+								</div>
+								<div class="f-airport" th:text="${flight.destination}"></div>
+							</div>
+							<div class="p-item col-md-3 text-center">
+								<div class="p-price">
+									<span>
+										￥<em th:text="${seatsInfo2.seatPrice}"></em>起
+									</span>
+									<br>
+									<span style="color: red;" th:text="${error}"></span>
+								</div>
+							</div>
+						</div>
+						<div class="s-type">
+							<div class="s-type1" style="height: 275px;">
+								<div class="s-head">
+									<div class="" style="color: #000000; float:left;margin: 0 0px 0px 0;font-size: 16px !important;font-weight: 700 !important;">
+										普通经济座
+										<em style="font-weight: lighter;font-size: smaller; color: green;">([[${msg2}]])</em>
+									</div>
+									<div class="" style="float: right; padding-top: 0px;    ">
+										<a href="" style="font-size: 12px;color: #0095df; text-decoration: none;display: block; width: inherit;">二等舱 | 退改政策</a>
+									</div>
+								</div>
+								<div class="s-info">
+									<ol style="margin: 16px;">
+										<li>普通经济舱。。便宜实惠，不包括托运费</li>
+										<li>普通经济舱</li>
+										<li>普通经济舱</li>
+										<li>普通经济舱</li>
+									</ol>
+									<div class="price" style="display: inline-block;">
+										<span >
+											<b>￥</b>
+											<em th:text="${seatsInfo2.seatPrice}" style="font-size: 28px;color: #faa701;font-weight: bold;">
+											</em>
+										</span>
+									</div>
+									<div class="btn" style="padding: 0 45px;float: right;">
+										<a th:href="@{/book/pserinfo}" class="btn btn-warning ">预订</a>
+									</div>
+								</div>
+								<div class="s-submit">
+									
+								</div>
+							</div>
+							<div class="s-type2" style="height: 275px;">
+								<div class="s-head">
+									<div class="" style="color: #000000; float:left;margin: 0 0px 0px 0;font-size: 16px !important;font-weight: 700 !important;">
+										商务经济座
+										<em style="font-weight: lighter;font-size: smaller; color: green;">([[${msg1}]])</em>
+									</div>
+									<div class="" style="float: right; padding-top: 0px;    ">
+										<a href="" style="font-size: 12px;color: #0095df; text-decoration: none;display: block; width: inherit;">一等舱 | 退改政策</a>
+									</div>
+								</div>
+								<div class="s-info">
+									<ol style="margin: 16px;">
+										<li>商务经济舱。。便宜实惠，包括托运费</li>
+										<li>经济舱</li>
+										<li>经济济舱</li>
+										<li>经济舱</li>
+									</ol>
+									<div class="price" style="display: inline-block;">
+										<span >
+											<b>￥</b>
+											<em th:text="${seatsInfo1.seatPrice}" style="font-size: 28px;color: #faa701;font-weight: bold;">
+												450
+											</em>
+										</span>
+									</div>
+									<div class="btn" style="padding: 0 45px;float: right;">
+										<a th:href="@{../book/pserinfo}" class="btn btn-warning ">预订</a>
+									</div>
+								</div>
+								<div class="s-submit">
+									
+								</div>
+							</div>
+						</div>
+					
+					</div>
+					
+					<div class="col-md-3">
+						<div class="side-right">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--footer start-->
+		<footer style="margin-top: 30px;">
+			<div class="container">
+				
+				<div class="hm-footer-copyright">
+					<div class="row">
+						<div class="col-sm-5">
+							
+							<p>
+								&copy;copyright. master never team；
+							</p><!--/p-->
+						</div>
+						<div class="col-sm-7">
+							<div class="footer-social">
+								<span><span><i class="fa fa-bath" aria-hidden="true">  +与作者取得联系</i></span></span>
+								<span><i class="fa fa-phone"> +86  187 3119 xxxx</i></span>
+								<div id="Layer1" style="display:none; position: absolute; left:440px ; top: -114px; z-index: 100;">
+									<img width="100" height="100" src="assets/img/myQQ.jpg" />
+								</div>
+								<a onmouseout="hiddenPic();" onmousemove="showPic();"><i class="fa fa-qq"></i></a>	
+								<!-- <img src="assets/img/myQQ.jpg" width="50" height="50" /> -->
+								<div id="Layer2" style="display:none; position: absolute; left:490px ; top: -104px; z-index: 100;">
+									<img width="100" height="100" src="assets/img/myWechat.jpg" />
+								</div>
+								<a onmouseout="hiddenPic2();" onmousemove="showPic2();"><i class="fa fa-wechat"></i></a>
+								<a href="https://twitter.com/?lang=zh-cn"><i class="fa fa-twitter"></i></a>
+								<a href="https://www.google.com/"><i class="fa fa-google-plus"></i></a>
+							</div>
+						</div>
+					</div>
+					
+				</div><!--/.hm-footer-copyright-->
+			</div><!--/.container-->
+
+		</footer><!--/.footer-->
+		<!--footer end-->
+		
+		
+		
+		
+		<script language="JavaScript">
+			function exchange(){
+				
+				var num1 = document.getElementById("origin").value;
+				var num2 = document.getElementById("destination").value; 
+				{
+					document.getElementById("origin").value = num2;
+					document.getElementById("destination").value = num1;
+				}
+				}
+			function showPic(){
+				
+					document.getElementById("Layer1").style.display = ""; 
+				} 
+			function hiddenPic(){ 
+					
+					document.getElementById("Layer1").style.display = "none"; 
+				} 
+			function showPic2(){
+				
+					document.getElementById("Layer2").style.display = ""; 
+				} 
+			function hiddenPic2(){ 
+					
+					document.getElementById("Layer2").style.display = "none"; 
+				} 
+		</script>
+	</body>
+</html>

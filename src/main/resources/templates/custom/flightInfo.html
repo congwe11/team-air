@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="utf-8">
 		<meta name="description" content="航班详情页面">
@@ -127,11 +127,11 @@
 			<div class="container">
 				<div class="row " style="height: 120px; background: white; margin-top: 20px; box-shadow: 0 0 20px #e9eaed;">
 					<div class="form-flight" style="margin: 20px;">
-						<form id="" action="" method="get" >
+						<form id="" th:action="@{/book/search}" method="get" >
 							<div class="col-md-2" style="padding-right: 0;">
 								<fieldset>
 								    <label for="origin" class="text-left">出发地:</label>
-								    <input name="origin" type="text" class="form-control" id="origin" value="石家庄" placeholder="ex: 石家庄" required="">
+								    <input name="origin" type="text" class="form-control" id="origin" value="石家庄" placeholder="ex: 石家庄" >
 								</fieldset>
 								
 							</div>
@@ -144,13 +144,13 @@
 							<div class="col-md-2" style="padding-left: 0;">
 								<fieldset>
 								    <label for="destination" class="text-left">目的地:</label>
-								    <input name="destination" type="text" class="form-control" id="destination" placeholder="ex: 上海" required="">
+								    <input name="destination" value="" type="text" class="form-control" id="destination" placeholder="ex: 上海">
 								</fieldset>
 							</div>
 							<div class="col-md-4">
 								<fieldset>
-								    <label for="departure" class="text-left">出发日期:</label>
-								    <input name="deparure" type="date" class="form-control date" id="departure" placeholder="Select date..." required="" onchange='this.form.()'>
+								    <label for="start_time" class="text-left">出发日期:</label>
+								    <input name="start_time" type="date" class="form-control date" id="start_time" placeholder="Select date..." onchange='this.form.()'>
 								</fieldset>
 							</div>
 							
@@ -164,12 +164,20 @@
 				</div>
 				
 				<div class="row d1" style="">
-					<p id="originName" style="margin: 10px 0 0 20px;">出发地：</p>
+					<p id="originName" style="margin: 10px 0 0 20px;">
+
+						出发地：<i style="color: green;" th:text="(${flight}) ? ${flight.origin} : '全国各地' "></i>
+						&nbsp;&nbsp;to &nbsp;&nbsp;
+						目的地：<i style="color: green;" th:text="(${flight}) ? ${flight.destination} : '全国各地' "></i>
+						&nbsp;&nbsp;&nbsp;
+						出发时间：<i style="color: green;" th:text="(${flight}) ? ${#dates.format(flight.start_time, 'yyyy-MM-dd HH:mm')} : ''"></i>
+					</p>
+
 					<hr style="margin-top: 10px;"/>
 					<div class="list tab-content" >
 						<ul>
 							<li class="col-md-3" th:each="air:${flights}">
-								<a href="flightDetails.html" target="_blank">
+								<a th:href="@{../book/airline/} + ${air.flight_id}" target="_blank">
 									<p class="price">
 										<span>￥[[${air.price}]]</span>
 									</p>
