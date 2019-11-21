@@ -26,7 +26,8 @@
 			}
 			.order1{
 				margin-top: 30px;
-				height: 500px;width: 60%; background: white;
+				padding-bottom: 100px;
+				width: 60%; background: white;
 				box-shadow: 0 0 20px #e9eaed;
 			}
 			.order1-list{
@@ -52,10 +53,12 @@
 				border-radius: 5px;
 				background: #efeff4;
 				border: none;
+				text-align: center;
 			}
 			.th th{
 				height: 32px;
 				font-weight: normal;
+				text-align: center;
 			}
 			.td{
 				height: 45px;
@@ -98,11 +101,11 @@
 				<li class="head-responsive-right pull-right">
 					<div class="header-top-right">
 						<ul>
-							<li class="nav2">
-								<span class="glyphicon glyphicon-user">&nbsp;</span>
-								<a th:href="@{/user/selfInfo}" th:text="(${session.loginUser}) ? ${session.loginUser.nickname} : '未登录' ">未登录</a>
+							<li class="header-top-contact">
+								<span class="glyphicon glyphicon-user"> </span>
+								<a th:href="@{/user/selfInfo}" th:text="(${session.loginUser}) ? ${session.loginUser.nickname} : '未登录' "></a>
 							</li>
-							<li class="nav2">
+							<li class="header-top-contact">
 								<a th:href="@{/user/logout}" th:if="(${session.loginUser})">sign out</a>
 								<a th:href="@{/user/sign}" th:if="!(${session.loginUser})">sign in</a>
 							</li>
@@ -117,15 +120,15 @@
 				<div class="row">
 					<div class="d1 col-md-10 col-md-offset-1" style="padding-left: 30px;" >
 						<ol class="breadcrumb">
-						  <li><a href="index.html">首页</a></li> 
-						  <li><a href="userOrder.html">订单</a></li>
+						  <li><a href="/index">首页</a></li>
+						  <li><a href="">订单</a></li>
 						  <li class="active">机票订单</li>
 						</ol>
 					</div>
 					<nav class="col-md-2 col-md-offset-1 sidebar">
 						<div class="sidebar-sticky">
 							<ul class="nav nav-pills nav-stacked">
-							  <li role="presentation" ><a href="userInfo.html">个人信息</a></li>
+							  <li role="presentation" ><a href="/user/selfInfo">个人信息</a></li>
 							  <li role="presentation" class="active"><a>我的订单</a></li>
 							</ul>
 						</div>
@@ -170,46 +173,48 @@
 					<div class="order1 col-md-8 col-md-offset-1">
 						<div class="title col-md-12 text-left">
 							<ul>
-								<li class="active"><a>机票订单</a></li>
-								<li class="active"><a>机票订单</a></li>
+								<li class="active"><a>全部机票订单</a></li>
+								<li class=""><a id="t1" onclick="refundOrder()" style="color: black;">退票订单</a></li>
+								<li class=""><a id="t2" onclick="overOrder()" style="color: green;">已完成订单</a></li>
+								<li class=""><a id="t3" onclick="waitRefund()" style="color: orangered;">等待退票订单</a></li>
 							</ul>
 						</div>
 						<div class="order1-list col-md-12">
-							<p style="font-size: 12px;">以下是您完成的订单:</p>
+							<p style="font-size: 12px;">以下是您的订单:</p>
 							<table class="f-list table"  cellpadding="0" cellspacing="0" border="0" align="center">
 								<tbody>
 									<tr class="th">
 
-										<th width="10%">订单号</th>
-										<th width="15%">下单日期</th>
-
-										<th width="15%">价格</th>
-										<th width="15%">状态</th>
-										<th width="25%">操作</th>
+										<th >订单号</th>
+										<th>下单日期</th>
+										<th>价格</th>
+										<th>状态</th>
+										<th style="text-align: left;" >操作</th>
 									</tr>
 									
-									<tr class="td">
-										<td>1</td>
-										<td>1211</td>
-										<td>2019/11/11</td>
-										<td>A-Z1</td>
-										<td>￥299</td>
-										<td>未出票</td>
+									<tr class="td" th:each="order:${myorder}">
+										<td th:text="${order.order_id}"></td>
+										<td th:text="${order.time}"></td>
+										<td th:text="'￥' + ${order.all_price}"></td>
 										<td>
-											<form action="" method="">
-												<input type="hidden" name="orderId" value="id" />
-												<a class="" href="orderInfo.html" target="_blank" onclick="" >订单详细</a>
+											<b th:if="${order.status} == '1' " style="color: green">已完成</b>
+											<b th:if="${order.status} == '2' " style="color: orangered">等待退票</b>
+											<b th:if="${order.status} == '3' " style="color: black">已退票</b>
+										</td>
+										<td style="text-align: left;">
+											<form id="refund" th:action="@{/user/refund}" method="post">
+												<input id="order_id" type="hidden" name="order_id" th:value="${order.order_id}" />
+												<a th:href="@{/user/myorder/} + ${order.order_id}" target="_blank">订单详细</a>
 												&nbsp;&nbsp;&nbsp;&nbsp;
-												<a class="" href="" target="" onclick="" >退票</a>
+												<a th:href="@{/user/refund/} + ${order.order_id}" target="_self" th:if="${order.status} == '1'">退票</a>
 											</form>
+
 										</td>
 									</tr>
 
 
-
-
-									<tr class="null_table" align="center" style="display: none;">
-										<td class="" colspan="6">暂时没有相关订单</td>
+									<tr th:if="${#lists.isEmpty(myorder)}" align="center" style="display: none;">
+										<td class="" colspan="5">暂时没有相关订单</td>
 									</tr>
 									
 								</tbody>
@@ -224,10 +229,7 @@
 							      </a>
 							    </li>
 							    <li><a href="#">1</a></li>
-							    <li><a href="#">2</a></li>
-							    <li><a href="#">3</a></li>
-							    <li><a href="#">4</a></li>
-							    <li><a href="#">5</a></li>
+
 							    <li>
 							      <a href="#" aria-label="Next">
 							        <span aria-hidden="true">&raquo;</span>
@@ -241,7 +243,17 @@
 					
 				</div>
 			</div>
+			<input id="msg" type="hidden" name="msg" th:value="${msg}">
 		</section>
-		
+		<script type="text/javascript">
+
+
+			window.onload = function () {
+				if ( msg.value != "")
+				{
+					window.alert(msg.value);
+				}
+			}
+		</script>
 	</body>
 </html>

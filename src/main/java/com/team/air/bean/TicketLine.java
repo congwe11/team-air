@@ -11,7 +11,7 @@ public class TicketLine {
     private String end_time;
     private String origin;
     private String destination;
-    private Double firstPrice;
+    private Double FirstPrice;
     private Integer order_id;
     private Integer sType;
 
@@ -73,11 +73,11 @@ public class TicketLine {
     }
 
     public Double getFirstPrice() {
-        return firstPrice;
+        return FirstPrice;
     }
 
     public void setFirstPrice(Double firstPrice) {
-        this.firstPrice = firstPrice;
+        this.FirstPrice = firstPrice;
     }
 
     public Integer getOrder_id() {

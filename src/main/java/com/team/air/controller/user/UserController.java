@@ -1,6 +1,8 @@
 package com.team.air.controller.user;
 
 import com.team.air.bean.OrderLine;
+import com.team.air.bean.Passengers;
+import com.team.air.bean.TicketLine;
 import com.team.air.bean.User;
 import com.team.air.mapper.AirLineMapper;
 import com.team.air.mapper.UserMapper;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import sun.security.krb5.internal.Ticket;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -116,7 +119,17 @@ public class UserController {
         return prefile + "sign_in";
     }
 
-
+    /**
+     *
+     * 订单状态
+     * 0 ：未支付
+     * 1 ：正常
+     * 2 : 申请退票中
+     * 3 ：退票完成的
+     * @param request
+     * @param model
+     * @return
+     */
     @RequestMapping("/myorder")
     public String myorder(HttpServletRequest request,Model model){
         User user = (User) request.getSession().getAttribute("loginUser");
@@ -128,6 +141,30 @@ public class UserController {
         return prefile +"userOrder";
     }
 
+    @RequestMapping("/myorder/{order_id}")
+    public String orderInfo(HttpServletRequest request,Model model,@PathVariable("order_id") String order_id){
+
+        TicketLine ticket = air2.getTicketByOrderId(order_id);
+        OrderLine order = air2.getOrderById(order_id);
+        Passengers pser = air2.getPserById(String.valueOf(ticket.getPassenger_id()));
+
+        model.addAttribute("pser",pser);
+        model.addAttribute("order_time",order.getTime());
+        model.addAttribute("ticket",ticket);
+        return prefile + "orderInfo";
+    }
+
+    @RequestMapping("/refund/{order_id}")
+    public String orderRefund(@PathVariable("order_id")String order_id,Model model){
+
+
+        air2.refund2(order_id);
+        String msg = "退票订单已提交，请耐心等待我们审核通过后，即刻返回相应退款！";
+
+        model.addAttribute("msg",msg);
+
+        return "forward:/user/myorder";
+    }
 
 
 }

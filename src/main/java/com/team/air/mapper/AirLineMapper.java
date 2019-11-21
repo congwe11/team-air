@@ -10,6 +10,8 @@ import java.util.List;
 @Mapper
 public interface AirLineMapper {
 
+    @Select("select * from ticketLine where order_id = #{id}")
+    public TicketLine getTicketByOrderId(String id);
 
     @Select("select * from orderLine")
     public List<OrderLine> getAllOrder();
@@ -27,16 +29,29 @@ public interface AirLineMapper {
 
     //添加机票
     @Options(useGeneratedKeys = true,keyProperty = "ticket_id")
-    @Insert("INSERT INTO ticketLine(passenger_id,order_id,start_time,end_time,origin,destination,FirstPrice,sType) " +
-            "values(#{passenger_id},#{order_id},#{start_time},#{end_time},#{origin},#{destination},#{firstPrice},#{sType})")
+    @Insert("INSERT INTO ticketLine(" +
+            "passenger_id," +
+            "order_id," +
+            "start_time," +
+            "end_time," +
+            "origin," +
+            "destination," +
+            "FirstPrice," +
+            "sType) " +
+            "values(#{passenger_id},#{order_id},#{start_time},#{end_time},#{origin},#{destination},#{FirstPrice},#{sType})")
     public int addTicket(TicketLine ticket);
 
     //添加乘客
-    @Insert("insert into passengers(passenger_id,flight_id,user_id,name,ID,sex,status)" +
-            "values(#{passenger_id},#{flight_id},#{user_id},#{name},#{ID},#{sex},#{status})") //错误在这
+    @Insert("insert into passengers(passenger_id,flight_id,user_id,name,ID,sex,status,numbers)" +
+            "values(#{passenger_id},#{flight_id},#{user_id},#{name},#{ID},#{sex},#{status},#{numbers})") //错误在这
     public int addPser(Passengers passengers);
 
 
+    @Update("update orderLine set status = 2 where order_id = #{ordee_id}")
+    public int refund2(String order_id);
+
+    @Update("update orderLine set status = 3 where order_id = #{ordee_id}")
+    public int refund3(String order_id);
 
     @Update("update passengers set status = 1 where passenger_id = #{id}")
     public int updatePser(String id);

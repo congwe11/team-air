@@ -9,6 +9,7 @@ public class Passengers {
     private String ID;
     private Integer sex;
     private Integer status;
+    private String numbers;
 
     @Override
     public String toString() {
@@ -19,7 +20,16 @@ public class Passengers {
                 ", name='" + name + '\'' +
                 ", ID='" + ID + '\'' +
                 ", sex=" + sex +
+                ",numbers"+numbers +
                 '}';
+    }
+
+    public String getNumbers() {
+        return numbers;
+    }
+
+    public void setNumbers(String numbers) {
+        this.numbers = numbers;
     }
 
     public Integer getStatus() {
