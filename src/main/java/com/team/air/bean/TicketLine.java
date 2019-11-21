@@ -5,16 +5,16 @@ import java.util.Date;
 public class TicketLine {
 
     private Integer ticket_id;
-    private Integer passer_id;
+    private Integer passenger_id;
     private Integer seatNo;
-    private Date start_time;
-    private Date end_time;
-    private String start_city;
-    private String terminus_city;
+    private String start_time;
+    private String end_time;
+    private String origin;
+    private String destination;
     private Double firstPrice;
-    private Integer orderNum;
-    private String sType;
-    private String seatNum;
+    private Integer order_id;
+    private Integer sType;
+
 
     public Integer getTicket_id() {
         return ticket_id;
@@ -24,12 +24,12 @@ public class TicketLine {
         this.ticket_id = ticket_id;
     }
 
-    public Integer getPasser_id() {
-        return passer_id;
+    public Integer getPassenger_id() {
+        return passenger_id;
     }
 
-    public void setPasser_id(Integer passer_id) {
-        this.passer_id = passer_id;
+    public void setPassenger_id(Integer passenger_id) {
+        this.passenger_id = passenger_id;
     }
 
     public Integer getSeatNo() {
@@ -40,36 +40,36 @@ public class TicketLine {
         this.seatNo = seatNo;
     }
 
-    public Date getStart_time() {
+    public String getStart_time() {
         return start_time;
     }
 
-    public void setStart_time(Date start_time) {
+    public void setStart_time(String start_time) {
         this.start_time = start_time;
     }
 
-    public Date getEnd_time() {
+    public String getEnd_time() {
         return end_time;
     }
 
-    public void setEnd_time(Date end_time) {
+    public void setEnd_time(String end_time) {
         this.end_time = end_time;
     }
 
-    public String getStart_city() {
-        return start_city;
+    public String getOrigin() {
+        return origin;
     }
 
-    public void setStart_city(String start_city) {
-        this.start_city = start_city;
+    public void setOrigin(String origin) {
+        this.origin = origin;
     }
 
-    public String getTerminus_city() {
-        return terminus_city;
+    public String getDestination() {
+        return destination;
     }
 
-    public void setTerminus_city(String terminus_city) {
-        this.terminus_city = terminus_city;
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 
     public Double getFirstPrice() {
@@ -80,27 +80,19 @@ public class TicketLine {
         this.firstPrice = firstPrice;
     }
 
-    public Integer getOrderNum() {
-        return orderNum;
+    public Integer getOrder_id() {
+        return order_id;
     }
 
-    public void setOrderNum(Integer orderNum) {
-        this.orderNum = orderNum;
+    public void setOrder_id(Integer order_id) {
+        this.order_id = order_id;
     }
 
-    public String getsType() {
+    public Integer getsType() {
         return sType;
     }
 
-    public void setsType(String sType) {
+    public void setsType(Integer sType) {
         this.sType = sType;
-    }
-
-    public String getSeatNum() {
-        return seatNum;
-    }
-
-    public void setSeatNum(String seatNum) {
-        this.seatNum = seatNum;
     }
 }

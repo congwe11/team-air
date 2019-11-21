@@ -285,7 +285,7 @@
 								<div class="f-airport" th:text="${flight.origin}"></div>
 							</div>
 							<div class="f-during col-md-2 text-center">
-								<div class="f-time">2小时 20分</div>
+								<div class="f-time"></div>
 								<div class="f-arrow">
 									<i class="fa fa-long-arrow-right fa-3x" aria-hidden="true"></i>
 								</div>
@@ -308,7 +308,10 @@
 							</div>
 						</div>
 						<div class="s-type">
+
 							<div class="s-type1" style="height: 275px;">
+
+
 								<div class="s-head">
 									<div class="" style="color: #000000; float:left;margin: 0 0px 0px 0;font-size: 16px !important;font-weight: 700 !important;">
 										普通经济座
@@ -329,17 +332,31 @@
 										<span >
 											<b>￥</b>
 											<em th:text="${seatsInfo2.seatPrice}" style="font-size: 28px;color: #faa701;font-weight: bold;">
+												250
 											</em>
 										</span>
 									</div>
+
 									<div class="btn" style="padding: 0 45px;float: right;">
-										<a th:href="@{/book/pserinfo}" class="btn btn-warning ">预订</a>
+										<!--<a href="orderChoose.html" class="btn btn-warning ">预订</a>-->
+
+										<form th:action="@{/book/pserinfo}" method="get">
+											<input type="hidden" name="flight_id" th:value="${flight.flight_id}" />
+
+											<!--seatsInfo-->
+											<input type="hidden" name="plane_id" th:value="${seatsInfo2.plane_id}" />
+											<input type="hidden" name="seatPrice" th:value="${seatsInfo2.seatPrice}"/>
+											<input type="hidden" name="seatType" th:value="${seatsInfo2.seatType}" />
+											<input type="hidden" name="seatCount" th:value="${seatsInfo2.seatCount}" />
+
+											<input class="btn  btn-warning" type="submit" value="预定" />
+										</form>
 									</div>
+
 								</div>
-								<div class="s-submit">
-									
-								</div>
+
 							</div>
+
 							<div class="s-type2" style="height: 275px;">
 								<div class="s-head">
 									<div class="" style="color: #000000; float:left;margin: 0 0px 0px 0;font-size: 16px !important;font-weight: 700 !important;">
@@ -366,14 +383,24 @@
 										</span>
 									</div>
 									<div class="btn" style="padding: 0 45px;float: right;">
-										<a th:href="@{../book/pserinfo}" class="btn btn-warning ">预订</a>
+										<form th:action="@{/book/pserinfo}" method="get">
+											<input type="hidden" name="flight_id" th:value="${flight.flight_id}">
+
+											<!--seatsInfo-->
+											<input type="hidden" name="plane_id" th:value="${seatsInfo1.plane_id}">
+											<input type="hidden" name="seatPrice" th:value="${seatsInfo1.seatPrice}">
+											<input type="hidden" name="seatType" th:value="${seatsInfo1.seatType}">
+											<input type="hidden" name="seatCount" th:value="${seatsInfo1.seatCount}">
+											<input class="btn btn-warning" type="submit" value="预定" >
+										</form>
 									</div>
 								</div>
-								<div class="s-submit">
-									
-								</div>
+
 							</div>
+
+
 						</div>
+
 					
 					</div>
 					

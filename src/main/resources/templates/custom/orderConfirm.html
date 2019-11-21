@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="订单确认页面" />
+		<title>用户订单确认页面</title>
+		<link rel="stylesheet" href="/assets/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="/assets/css/mycss/flightDetails.css" />
+		<link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+		<style>
+			.warn-tags{
+				border: 1px solid #ffeecc;
+				    border-radius: 4px;
+				    background-color: #fff7e6;
+				    font-size: 12px;
+					
+					    margin: 20px auto;
+					    padding: 20px 40px;
+			}
+			.warn-tags div p{
+				    color: #333333;
+					margin-bottom: 5px;
+					
+			}
+			.order-info{
+				    border: 1px solid transparent;
+					height: 100px;
+					    margin: 0 auto;
+					    box-shadow: 0.5px 0.866px 2px 0px rgba(233, 233, 233, 0.5);
+						border: 1px solid #ffeecc;
+			}
+			.info-1{
+				/* background: #EBEBEB; */
+				    /* border: 1px solid #00ab6f; */
+				    border-radius: 4px;
+				    width: 1120px;
+				    margin: 0 auto;
+				    padding: 16px 40px 20px;	
+					
+			}
+			.info-p{
+				    font-size: 18px;
+				    font-weight: bold;
+				    margin-left: 10px;
+					color: #000000;
+			}
+			.info-r span{
+				font-size: 25px;
+				color: #faa701;
+			}
+			.confirm .btn-confirm a{
+				margin-top: 10px;
+				background: #faa701;
+				    color: #fff;
+				    width: 190px;
+				    float: right;
+				    height: 42px;
+				    line-height: 42px;
+				    border-radius: 4px;
+				    text-align: center;
+				    font-size: 18px;
+				    cursor: pointer;
+				text-decoration: none;
+			}
+			.nav-horizontal{
+				border-bottom: 1px solid;position: relative;top: -10px;padding: 0 50px;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<section class="nav-area">
+			<div class="header-area">
+				<!-- Start Navigation -->
+			    <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy" style="height: 80px;background: white;" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+		
+			        <div class="container">
+		
+			            <!-- Start Header Navigation -->
+			            <div class="navbar-header">
+							<a class="navbar-brand" href="index.html"><span>Book</span>ing</a>
+							<ul class="navbar-left" style="">
+								<li class="nav1" style="padding: 0 10px 0 30px;">乘机信息</li>
+								<li class="nav1 nav-horizontal" >&nbsp;</li>
+								<li class="nav1" style="padding: 0 10px;  ">添加乘客</li>
+								<li class="nav1 nav-horizontal" >&nbsp;</li>
+								<li class="nav1" style="padding: 0 10px; color: #ff545a;">订单支付</li>
+								<li class="nav1 nav-horizontal" >&nbsp;</li>
+								<li class="nav1" style="padding: 0 10px; ">完成</li>
+							</ul>
+							
+			            </div><!--/.navbar-header-->
+			            <!-- End Header Navigation -->
+		
+			            <!-- Collect the nav links, forms, and other content for toggling -->
+			            <div class="" id="navbar-menu">
+			                <ul class="navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+			                    
+								<li class="nav2">
+									<span class="glyphicon glyphicon-user">&nbsp;</span>
+									<a th:href="@{/user/selfInfo}" th:text="(${session.loginUser}) ? ${session.loginUser.nickname} : '未登录' ">未登录</a>
+								</li>
+								<li class="nav2">
+									<a th:href="@{/user/logout}" th:if="(${session.loginUser})">sign out</a>
+									<a th:href="@{/user/sign}" th:if="!(${session.loginUser})">sign in</a>
+								</li>
+			                    
+			                </ul><!--/.nav -->
+			            </div><!-- /.navbar-collapse -->
+			        </div><!--/.container-->
+			    </nav><!--/nav-->
+			    <!-- End Navigation -->
+			</div><!--/.header-area-->
+		</section><!-- /.top-area-->
+		
+		<div class="container">
+			<form>
+				<input type="hidden" name="" />
+			</form>
+			<div class="row">
+				<div class="warn-tags">
+					<div >
+						注意事项：
+						<p>1、您所购买的舱位，手提行李7KG，20KG托运行李额。行李购买需要提前2小时，网上购买优惠更多。</p>
+						<p>2、请至少提前120分钟到达石家庄正定国际机场T2办理值机手续。</p>
+						<p>3、您是当前订单的乘机人，根据您的会员等级，行程结束后可获得360积分。</p>
+						<p>• 为了您能够顺利出行，请在航班离站前45分钟办妥乘机手续。香港、澳门、首尔出港航班、广州出港的国际航班起飞前60分钟停止办理值机手续。浦东机场出港国际（区域）航班起飞前50分钟停止办理值机手续。（备注：因各地机场侯机区域条件不同并可能变动，停止办理乘机手续的时间会有一定差异，请您与当地机场确认，以免误机。）</p>
+						<p>• 根据民航最新规定，旅客随身携带行李物品仅限一件.请在航班离站前120分钟至机场办理值机手续。</p>
+						<p>• 为响应国家"节能减排"方针，自2010年1月1日起，航班上停止提供免费饮用水。</p>
+					</div>
+				</div>
+				
+				<div class="order-info">
+					<div class="info-1" style="width: 100%;">
+						<div class="info-l info-p" style="float: left;">
+							<p style="margin: 0;">
+								订单创建成功！订单编号 &nbsp;<span style="color: #faa701;">[[${order.order_id}]]</span>
+							</p>
+						</div>
+						<div class="info-r" style="float: right; font-weight: bold;color: #000000;">
+							订单金额：
+							<span>￥</span><span>[[${order.all_price}]]</span>
+						</div>
+					</div>
+					<div class="info-2" style="">
+						<div style="margin:10px 0 5px 50px; color: #000000;">
+							<i></i>
+							石家庄 —— 上海 预计 <span style="color: #faa701" th:text="${#dates.format(start_time,'yyyy-MM-dd HH:mm')}"></span>  出发
+						</div>
+						<div style="margin:5px 0 5px 50px; color: #000000; font-weight: bold;">
+							<i></i>
+							<b th:text="(${sType} == '1') ? '商务经济舱/一等座' : '普通经济舱/二等座'"></b>
+						</div>
+					</div>
+				</div>
+				
+				<div class="confirm">
+					<div class="btn-confirm">
+						<a onclick="submit()">确认支付</a>
+						<form th:action="@{/book/finish}" id="finish" method="get">
+							<input type="hidden" name="order_id" th:value="${order.order_id}">
+							<input type="hidden" name="pser_id" th:value="${pser_id}">
+							<input type="hidden" name="sType" th:value="${sType}">
+						</form>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+		<script anguage="JavaScript">
+			function submit(){
+				document: finish.submit();
+			}
+
+		</script>
+	</body>
+</html>

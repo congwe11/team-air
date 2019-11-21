@@ -1,11 +1,10 @@
 package com.team.air.service;
 
-import com.team.air.bean.AirLine;
-import com.team.air.bean.Flight;
-import com.team.air.bean.SeatsInfo;
+import com.team.air.bean.*;
 import com.team.air.mapper.AirLineMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,6 +15,41 @@ public class AirLineService {
 
     @Autowired
     AirLineMapper airLineMapper;
+
+    @Transactional
+    public void Prefinish(OrderLine order, Passengers pser,Fleave fleave){
+        int i = -1;
+        int j = -1;
+        int k = -1;
+        int n = fleave.getLeaveTickets();
+        fleave.setLeaveTickets(n-1);
+
+        i = airLineMapper.addOrder(order);
+        j = airLineMapper.addPser(pser);
+        k = airLineMapper.updateFleave(fleave);
+        if( i != 1 && j !=1 && k !=1){
+            throw new RuntimeException("插入 抛异常了");
+        }
+
+
+    }
+
+    @Transactional
+    public void finish(String order_id,String pser_id,TicketLine ticket){
+        int i = -1;
+        int j = -1;
+        int k = -1;
+        i = airLineMapper.updateOder(order_id);
+        j = airLineMapper.updatePser(pser_id);
+        k = airLineMapper.addTicket(ticket);
+
+        if( i != 1 && j !=1 && k !=1){
+            throw new RuntimeException("插入 抛异常了");
+        }
+
+
+
+    }
 
     public Flight getFlightById(Integer id){
         return airLineMapper.getFlightById(id);

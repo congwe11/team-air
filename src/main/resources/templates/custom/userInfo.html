@@ -65,14 +65,13 @@
 						<div class="sidebar-sticky">
 							<ul class="nav nav-pills nav-stacked">
 							  <li role="presentation" class="active"><a>个人信息</a></li>
-							  <li role="presentation"><a href="userOrder.html">我的订单</a></li>
+							  <li role="presentation"><a th:href="@{/user/myorder}">我的订单</a></li>
 							</ul>
 						</div>
 					</nav>
 					
 					<div class="col-md-6 col-md-offset-1">
 						<div class="main" >
-
 
 							<div class="d1 text-center">
 								<form class="form-horizontal" th:action="@{/user/upUserInfo}" method="get" style="border-bottom: 1px solid #7B8088;">

@@ -1,6 +1,8 @@
 package com.team.air.controller.user;
 
+import com.team.air.bean.OrderLine;
 import com.team.air.bean.User;
+import com.team.air.mapper.AirLineMapper;
 import com.team.air.mapper.UserMapper;
 import com.team.air.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Map;
 
 @RequestMapping("user")
@@ -21,6 +24,8 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    AirLineMapper air2;
 
     //用户登录
     @PostMapping("/login")
@@ -111,9 +116,16 @@ public class UserController {
         return prefile + "sign_in";
     }
 
-    @RequestMapping("/book")
-    public String userBook(){
-        return "orderBook";
+
+    @RequestMapping("/myorder")
+    public String myorder(HttpServletRequest request,Model model){
+        User user = (User) request.getSession().getAttribute("loginUser");
+
+        List<OrderLine> myorder = air2.getOrderByUser(user.getUser_id());
+
+        model.addAttribute("myorder",myorder);
+
+        return prefile +"userOrder";
     }
 
 

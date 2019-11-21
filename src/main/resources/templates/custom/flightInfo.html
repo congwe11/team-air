@@ -150,7 +150,7 @@
 							<div class="col-md-4">
 								<fieldset>
 								    <label for="start_time" class="text-left">出发日期:</label>
-								    <input name="start_time" type="date" class="form-control date" id="start_time" placeholder="Select date..." onchange='this.form.()'>
+								    <input name="start_time" type="date" class="form-control date" id="start_time" placeholder="Select date...">
 								</fieldset>
 							</div>
 							
@@ -170,7 +170,7 @@
 						&nbsp;&nbsp;to &nbsp;&nbsp;
 						目的地：<i style="color: green;" th:text="(${flight}) ? ${flight.destination} : '全国各地' "></i>
 						&nbsp;&nbsp;&nbsp;
-						出发时间：<i style="color: green;" th:text="(${flight}) ? ${#dates.format(flight.start_time, 'yyyy-MM-dd HH:mm')} : ''"></i>
+						出发时间：<i style="color: green;" th:text="(${flight}) ? ${flight.start_time} : ''"></i>
 					</p>
 
 					<hr style="margin-top: 10px;"/>

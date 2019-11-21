@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="订单详情页面">
+		<link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/assets/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="/assets/css/mycss/flightDetails.css" />
+		<title>订单详情</title>
+		
+		<style>
+			body{
+				background: #f7f7f7;
+				font-family: "Microsoft YaHei","Arial",sans-serif;
+				}
+			}
+			.t-content{
+				
+			}
+			.t-content{
+				height: 700px;
+				margin-top: 20px;
+				border: 1px solid #e1ece8;
+				border-radius: 5px;
+				padding: 0 32px;
+				position: relative;
+				z-index: 10;
+				background: #fff;
+				border: 1px solid transparent;
+				box-shadow: 0 0 20px #e9eaed;
+			}
+			.o-table{
+				margin-top: 13px;
+				width: 100%;
+				    border: 1px solid #ddd;
+				    border-radius: 5px;
+				    font-family: 'Microsoft YaHei';
+				    font-size: 12px;
+				    color: #6b6b6b;
+				    text-align: left;
+			}
+			table{
+				    border-collapse: collapse;
+				    border-spacing: 0;
+			}
+			table tbody .th th{
+					font-weight: bold;
+					    font-size: 14px;
+					    color: #333;
+					    padding: 8px 0 8px 15px;
+					    background: #f7f7f7;
+					    border-radius: 5px 5px 0 0;
+					    border-bottom: 1px solid #ddd;
+			} 
+			table tbody tr .name{
+				    color: #333;
+				    border-left: none;
+				    width: 185px;
+			}
+			table tbody tr td{
+				    padding: 17px 0 17px 15px;
+				    border-left: 1px solid #ddd;
+				    border-bottom: 1px solid #ddd;
+			}
+			ol,ul li{
+				list-style: none;
+			}
+			.list{
+				margin: 0;
+				    padding: 0;
+				    width: 100%;
+			}
+			.list li{
+				float: left;
+				    margin: 20px 16px 0 0;
+				    list-style: none;
+				    width: 45%;
+			}
+			.item .th .name{
+				padding: 0 25px;
+				    width: 180px;
+				    color: #fff;
+				    font-size: 14px;
+				    position: relative;
+				    background: #35d59c;
+				    border-radius: 5px 0 0 5px;
+			}
+			.item tr td{
+					height: 125px;
+					width: 320px;
+					text-align: left;
+					font-family: 'Microsoft YaHei';
+					/* width: 100%; */
+					position: relative;
+			}
+			.info{
+				padding: 0 20px;
+				width: 183px;
+				color: #6b6b6b;
+				font-size: 12px;
+				line-height: 20px;
+				background: #f7f7f7;
+				border-radius: 0 5px 5px 0;
+			}
+			
+			/* footer */
+			.hm-footer-copyright {
+			    padding: 40px 0;
+			    border-top: 1px solid #e1e5eb;
+			}
+			.hm-footer-copyright p,.hm-footer-copyright p a {
+			    color: #a5adb3;
+			    font-size: 14px;
+			    font-weight: 400;
+			    text-transform: capitalize;
+			}
+			.footer-social {text-align: right;}
+			.footer-social .fa-phone:before {
+			    position: relative;
+			    top: 2px;
+			}
+			.footer-social a ,.footer-social span {
+			    display: inline-block;
+			    color: #afb4bf;
+			    font-size: 14px;
+			    margin-left: 15px;
+			    -webkit-transition: .3s; 
+			    -moz-transition:.3s; 
+			    -ms-transition:.3s; 
+			    -o-transition:.3s;
+			    transition: .3s;
+			}
+			.footer-social a {
+			    width: 35px;
+			    height: 35px;
+			    line-height: 35px;
+			    background: #eef2f6;
+			    text-align: center;
+			    border-radius: 50%;
+			}
+			.footer-social span {margin-right:15px;margin-left: 0;color: #a5adb3;}
+			.footer-social span:hover{color: #ff545a;}
+			.footer-social a:hover {background:#ff545a;color: #fff;}
+			
+			
+		</style>
+	</head>
+	<body>
+		<section class="nav-area">
+			<div class="header-area">
+				<!-- Start Navigation -->
+			    <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy" style="height: 80px;background: white;" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+		
+			        <div class="container">
+		
+			            <!-- Start Header Navigation -->
+			            <div class="navbar-header">
+							<a class="navbar-brand" href="index.html"><span>Book</span>ing</a>
+							<ul class="navbar-left" style="">
+								<li class="nav1"><a class="" href="/index">首页</a></li>
+								<li class="nav1"><a class="" href="/book/airline">订票</a></li>
+							</ul>
+							
+			            </div><!--/.navbar-header-->
+			            <!-- End Header Navigation -->
+		
+			            <!-- Collect the nav links, forms, and other content for toggling -->
+			            <div class="" id="navbar-menu">
+			                <ul class="navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+
+								<li class="nav2">
+									<span class="glyphicon glyphicon-user">&nbsp;</span>
+									<a th:href="@{/user/selfInfo}" th:text="(${session.loginUser}) ? ${session.loginUser.nickname} : '未登录' ">未登录</a>
+								</li>
+								<li class="nav2">
+									<a th:href="@{/user/logout}" th:if="(${session.loginUser})">sign out</a>
+									<a th:href="@{/user/sign}" th:if="!(${session.loginUser})">sign in</a>
+								</li>
+			                    
+			                </ul><!--/.nav -->
+			            </div><!-- /.navbar-collapse -->
+			        </div><!--/.container-->
+			    </nav><!--/nav-->
+			    <!-- End Navigation -->
+			</div><!--/.header-area-->
+		</section><!-- /.top-area-->
+		
+		<div class="container">
+			<div class="row">
+				<div class="ticket col-md-12">
+					<div class="t-content">
+						<div class="">
+							<div class="t-head"  style=" padding-top: 18px;" >
+								<div class="" style="color: #333;padding-bottom: 5px;border-bottom: 1px solid #e1ece8;;">
+									<p style="color: #000000; font-size: 16px; " >
+										<i style="color: #ff545a;" class="fa fa-plane fa-2x"></i> 
+										机票订单详情
+									</p>
+								</div>
+							</div>
+							<div class="order">
+								<table class="o-table" cellpadding="0" cellspacing="0" border="0">
+									<tbody>
+										<tr class="th">
+											<th  colspan="2">基本信息</th>
+										</tr>
+										<tr>
+											<td class="name">订单号</td>
+											<td class=""></td>
+										</tr>
+										<tr>
+											<td class="name">订单金额</td>
+											<td class="">￥490</td>
+										</tr>
+										<tr>
+											<td class="name">下单时间</td>
+											<td class="">2019-11-08 01:08:56</td>
+										</tr>
+										<tr>
+											<td>订单状态</td>
+											<td>已完成</td>
+										</tr>
+									</tbody>
+								</table>
+								
+								<table class="o-table" cellpadding="0" cellspacing="0" border="0">
+									<tbody>
+										<tr class="th">
+											<th  colspan="2">行程</th>
+										</tr>
+										<tr>
+											<td class="name">机票</td>
+											<td class="">预计出发： 2019-12-02 07:40 石家庄 预计到达：2019-12-02 10:00 上海</td>
+										</tr>
+										
+									</tbody>
+								</table>
+							</div>
+							
+							
+						</div>
+
+						<div class="t-passer" style="margin-top: 60px;">
+							<div class="" style="color: #333;padding-bottom: 5px;border-bottom: 1px solid #e1ece8;;">
+								<p style="color: #000000; font-size: 16px; " >
+									<i style="color: #ff545a;" class="fa fa-grav fa-2x" aria-hidden="true"></i>
+									乘机人信息
+								</p>
+							</div>
+							<ul class="list">
+								<li class="">
+									<table class="item" cellpadding="0" cellspacing="0" border="0">
+										<tr class="th">
+											<td class="name">
+												<p>*从未</p>
+												<p>(成人)</p>
+											</td>
+											<td class="info">
+												<p>出生年月：1996-11-12</p>
+												<p>联系电话：187******20</p>
+												<p>证件号码：13062*********2633(身份证)</p>
+											</td>
+										</tr>
+									</table>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--footer start-->
+		<footer style="margin-top: 30px;">
+			<div class="container">
+				
+				<div class="hm-footer-copyright">
+					<div class="row">
+						<div class="col-sm-5">
+							
+							<p>
+								&copy;copyright. master never team；
+							</p><!--/p-->
+						</div>
+						<div class="col-sm-7">
+							<div class="footer-social">
+								<span><span><i class="fa fa-bath" aria-hidden="true">  +与作者取得联系</i></span></span>
+								<span><i class="fa fa-phone"> +86  187 3119 xxxx</i></span>
+								<div id="Layer1" style="display:none; position: absolute; left:440px ; top: -114px; z-index: 100;">
+									<img width="100" height="100" src="assets/img/myQQ.jpg" />
+								</div>
+								<a onmouseout="hiddenPic();" onmousemove="showPic();"><i class="fa fa-qq"></i></a>	
+								<!-- <img src="assets/img/myQQ.jpg" width="50" height="50" /> -->
+								<div id="Layer2" style="display:none; position: absolute; left:490px ; top: -104px; z-index: 100;">
+									<img width="100" height="100" src="assets/img/myWechat.jpg" />
+								</div>
+								<a onmouseout="hiddenPic2();" onmousemove="showPic2();"><i class="fa fa-wechat"></i></a>
+								<a href="https://twitter.com/?lang=zh-cn"><i class="fa fa-twitter"></i></a>
+								<a href="https://www.google.com/"><i class="fa fa-google-plus"></i></a>
+							</div>
+						</div>
+					</div>
+					
+				</div><!--/.hm-footer-copyright-->
+			</div><!--/.container-->
+		</footer><!--/.footer-->
+		<!--footer end-->
+		
+		<script language="JavaScript">
+			function showPic(){
+				
+					document.getElementById("Layer1").style.display = ""; 
+				} 
+			function hiddenPic(){ 
+					
+					document.getElementById("Layer1").style.display = "none"; 
+				} 
+			function showPic2(){
+				
+					document.getElementById("Layer2").style.display = ""; 
+				} 
+			function hiddenPic2(){ 
+					
+					document.getElementById("Layer2").style.display = "none"; 
+				} 
+		</script>
+	</body>
+</html>

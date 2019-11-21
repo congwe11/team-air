@@ -1,15 +1,65 @@
 package com.team.air.mapper;
 
 import com.team.air.bean.*;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
+import org.junit.jupiter.api.Order;
 
 import java.util.Collection;
 import java.util.List;
 
 @Mapper
 public interface AirLineMapper {
+
+
+    @Select("select * from orderLine")
+    public List<OrderLine> getAllOrder();
+
+    @Select("Select * from passengers where passenger_id = #{id}")
+    public Passengers getPserById(String id);
+
+    @Select("select * from orderLine where user_id = #{id}")
+    public List<OrderLine> getOrderByUser(Integer id);
+
+    //添加订单
+    @Insert("insert ignore into orderLine(order_id,user_id,time,all_price,status)" +
+            "values(#{order_id},#{user_id},#{time},#{all_price},#{status})")
+    public int addOrder(OrderLine orderLine);
+
+    //添加机票
+    @Options(useGeneratedKeys = true,keyProperty = "ticket_id")
+    @Insert("INSERT INTO ticketLine(passenger_id,order_id,start_time,end_time,origin,destination,FirstPrice,sType) " +
+            "values(#{passenger_id},#{order_id},#{start_time},#{end_time},#{origin},#{destination},#{firstPrice},#{sType})")
+    public int addTicket(TicketLine ticket);
+
+    //添加乘客
+    @Insert("insert into passengers(passenger_id,flight_id,user_id,name,ID,sex,status)" +
+            "values(#{passenger_id},#{flight_id},#{user_id},#{name},#{ID},#{sex},#{status})") //错误在这
+    public int addPser(Passengers passengers);
+
+
+
+    @Update("update passengers set status = 1 where passenger_id = #{id}")
+    public int updatePser(String id);
+
+    @Update("update orderLine set status = 1 where order_id = #{id}")
+    public int updateOder(String id);
+
+    //修改余票数
+    @Update("update Fleaves set leaveTickets=#{leaveTickets} where flight_id=#{flight_id} and seatType = #{seatType}")
+    public int updateFleave(Fleave fleave);
+
+
+    @Select("select * from orderLine where order_id = #{id}")
+    public OrderLine getOrderById(String id);
+
+    @Select("SELECT count(*) FROM orderLine")
+    public int countOrderline();
+
+    @Select("SELECT count(*) FROM ticketLine")
+    public int countTicketline();
+
+    @Select("SELECT count(*) FROM passengers")
+    public int countPser();
 
     @Select("SELECT * FROM air_line")
     public Collection<AirLine> getAllAirline();
@@ -68,6 +118,12 @@ public interface AirLineMapper {
     //余票
     @Select("SELECT * FROM Fleaves WHERE flight_id = #{flight_id}")
     public List<Fleave> getLeaveByFlightId(Integer flight_id);
+
+    @Select("SELECT * FROM Fleaves WHERE flight_id = #{flight_id} and seatType = #{seatType}")
+    public Fleave getLeaveByOne(String flight_id,String seatType);
+
+
+
 
 
 }

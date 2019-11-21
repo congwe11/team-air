@@ -9,7 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -24,6 +28,11 @@ public class SpringbootAirApplicationTests {
     @Test
     public void contextLoads() {
 
+        List<OrderLine> allOrder = airLineMapper.getAllOrder();
+
+        for (OrderLine o : allOrder){
+            System.out.println(o.toString());
+        }
 //        Collection<AirLine> allAirline = airLineMapper.getAllAirline();
 //        Collection<SeatsInfo> seatsInfo = airLineMapper.getSeatsInfo();
 //        Collection<AirLine> a = airLineMapper.getAllAirline();
@@ -37,7 +46,9 @@ public class SpringbootAirApplicationTests {
 //        for(Flight s : b){
 //            System.out.println(s.toString());
 //        }
-
+//        Date date = new Date();
+//        SimpleDateFormat sdf = (SimpleDateFormat) DateFormat.getDateTimeInstance();
+//        System.out.println("当前时间：：：："+sdf.format(date));
 
     }
 

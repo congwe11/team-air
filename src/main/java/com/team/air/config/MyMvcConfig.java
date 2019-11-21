@@ -30,6 +30,7 @@ public class MyMvcConfig {
                 registry.addViewController("/user/selfInfo").setViewName("custom/userInfo");
                 //航班信息列表页面
                 registry.addViewController("/book/airline").setViewName("custom/flightInfo");
+                //
 
 
 
@@ -43,7 +44,7 @@ public class MyMvcConfig {
                 //SpringBoot已经做好了静态资源映射
                 registry.addInterceptor(new LoginHandlerInterceptor())
                         .addPathPatterns("/book","/user/book","/user/selfInfo","/user/upUserInfo",
-                                "/user/upPsw")
+                                "/user/upPsw","/book/pserinfo","/book/pay","/book/finish")
                         .excludePathPatterns("/book/airline","/book/search");
             }
 

@@ -163,7 +163,7 @@
 					<div class="passer-user col-md-9">
 						<ul>
 							<li>
-								{{user}}
+								[[${session.loginUser.name}]]
 							</li>
 						</ul>
 					</div>
@@ -171,32 +171,41 @@
 				<div class="row p-info">
 					<div class="col-md-9">
 						<ul id="passers" class="passers">
-							<form th:action="">
-
 
 							<li class="passer-item col-md-12" style="display: list-item;z-index: 15;">
 								<div class="title">
 									<div class="info" style="display: inline-block; font-weight: bold; color: #000000; ">
-										<span class="num" style="font-size: 18px;">{{num}}</span>
+										<span class="num" style="font-size: 18px;">1</span>
 										<span class="type">成人</span>
 									</div>
 									<div class="btn-del" style="float: right;">
-										<a href="" style="font-size: 12px; color: #000000;text-decoration: none;">× 移除</a>
+										<input type="reset" style="font-size: 13px; color: #000000;border: none;background-color: white;" value="× 清除">
 									</div>
 								</div>
 								<div class="info">
 									<ul style="padding: 20px 20px 30px 0;">
+										<form th:action="@{/book/pay}" method="get" id="pserinfo">
+										<input type="hidden" name="order_id" th:value="${order}">
+										<input type="hidden" name="sType" th:value="${sType}">
+										<input type="hidden" name="flight_id" th:value="${flight_id}">
+										<input type="hidden" name="user_id" th:value="${session.loginUser.user_id}">
 										<li class="passer-info" style="margin-right: 30px;">
 											<label class="l1" for="name">乘机证件上的姓名:</label>
-											<input id="name" name="name" placeholder="乘机证件上的姓名" style="height: 35px;"/>
+											<input th:value="${session.loginUser.name}" id="name" name="name" placeholder="乘机证件上的姓名" style="height: 35px;"/>
 										</li>
 										<li class="passer-info" style="margin-right: 30px;">
 											<label class="l1" for="number">电话号码:</label>
-											<input id="number" name="number" placeholder="" style="height: 35px;"/>
+											<input th:value="${session.loginUser.numbers}" id="number" name="number" style="height: 35px;"/>
 										</li>
-										<li class="passer-info" style="margin-right: :;0px;">
+										<li class="passer-info" style="margin-right: 0px;">
 											<label class="l1" for="IDnum">身份证号码:</label>
-											<input id="IDnum" name="IDnum" placeholder="" style="height: 35px;"/>
+											<input th:value="${session.loginUser.ID}" id="IDnum" name="ID" style="height: 35px;"/>
+										</li>
+										<li class="passer-info" style="margin-right: 0px;">
+											<label class="l1" for="sex">性别:</label>
+											<select id="sex"  name="sex" class="select" style="height: 35px;">
+												<option selected th:value="${session.loginUser.sex}" th:text="(${session.loginUser.sex}==1)? '男' : '女'"> </option>
+											</select>
 										</li>
 									</ul>
 								</div>
@@ -222,7 +231,7 @@
 				<div class="submit-order row">
 					<div class="col-md-9">
 						<div class="agreement">
-							<input type="checkbox" name="agree" class="agreecheck" />
+							<input id="check" type="checkbox" name="agree" class="agreecheck" />
 							<div class="text" style="display: inline-block;">
 								<span class="" style="font-size: 12px;"> &nbsp;我已确认乘客信息，已认真阅读并同意遵守</span>
 							</div>
@@ -241,10 +250,18 @@
 		
 		<script language="JavaScript">
 			function jump(){
-				window.location.href="flightInfo.html"
+
+				window.location.href="flightInfo.html";
+
 			}
 			function next(){
-				window.location.href="orderConfirm.html"
+				if (document.getElementById("check").checked == true){
+					// window.location.href="/book/pay";
+					document: pserinfo.submit();
+				}
+				else{
+					window.alert("请勾选确认乘客信息！");
+				}
 			}
 			function del(){
 				

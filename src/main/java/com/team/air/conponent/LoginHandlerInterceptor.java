@@ -19,7 +19,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
 
         if(user == null){
             //未登录，返回登录页面
-            System.out.println("进入了，登录拦截器！！！！！");
+            System.out.println("进入了登录拦截器！！！！！");
             request.setAttribute("msg","您还没有登录！请先登录！");
             request.getRequestDispatcher("/user/sign").forward(request,response);
             return false;

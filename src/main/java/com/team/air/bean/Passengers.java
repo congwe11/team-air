@@ -2,19 +2,40 @@ package com.team.air.bean;
 
 public class Passengers {
 
-    private Integer passer_id;
+    private Integer passenger_id;
     private Integer flight_id;
     private Integer user_id;
     private String name;
     private String ID;
     private Integer sex;
+    private Integer status;
 
-    public Integer getPasser_id() {
-        return passer_id;
+    @Override
+    public String toString() {
+        return "Passengers{" +
+                "passer_id=" + passenger_id +
+                ", flight_id=" + flight_id +
+                ", user_id=" + user_id +
+                ", name='" + name + '\'' +
+                ", ID='" + ID + '\'' +
+                ", sex=" + sex +
+                '}';
     }
 
-    public void setPasser_id(Integer passer_id) {
-        this.passer_id = passer_id;
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Integer getPassenger_id() {
+        return passenger_id;
+    }
+
+    public void setPassenger_id(Integer passenger_id) {
+        this.passenger_id = passenger_id;
     }
 
     public Integer getFlight_id() {
