@@ -31,7 +31,7 @@
   <body class="text-center">
 	
     <form class="form-signin" th:action="@{/user/login}" method="post">
-      <img class="mb-4" src="../../static/assets/img/login.svg" th:src="@{/assets/img/login.svg}" alt="" width="80" height="80">
+      <img class="mb-4" th:src="@{/assets/img/login.svg}" alt="" width="80" height="80">
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 
       <p id="loginInfo" style="color: orangered;" th:text="${msg}" th:if="${ not #strings.isEmpty(msg)}"></p>

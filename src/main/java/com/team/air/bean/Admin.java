@@ -6,7 +6,14 @@ public class Admin {
     private String ad_psw;
     private String identity;
 
-
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "ad_username='" + ad_username + '\'' +
+                ", ad_psw='" + ad_psw + '\'' +
+                ", identity='" + identity + '\'' +
+                '}';
+    }
 
     public String getAd_username() {
         return ad_username;

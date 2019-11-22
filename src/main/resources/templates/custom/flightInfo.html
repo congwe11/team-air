@@ -64,10 +64,10 @@
 				color: #faa701;
 			}
 			.list ul li a .arrival{
-				font-size: 20px;
+				font-size: 22px;
 			}
 			.list ul li a p{
-				font-size: 45px;
+				font-size: 20px;
 			}
 			.d1{
 				height: 400px;
@@ -178,13 +178,17 @@
 						<ul>
 							<li class="col-md-3" th:each="air:${flights}">
 								<a th:href="@{../book/airline/} + ${air.flight_id}" target="_blank">
-									<p class="price">
-										<span>￥[[${air.price}]]</span>
-									</p>
 									<div class="arrival">
 										[[${air.origin}]] <span class="glyphicon glyphicon-plane"></span>
 										[[${air.destination}]]
 									</div>
+									<p class="time" style="font-size: 14px; margin: 0;">
+										[[${#dates.format(air.start_time,'MM月dd日 HH:mm')}]]—[[${#dates.format(air.end_time,'MM月dd日 HH:mm')}]]
+									</p>
+									<p class="price" style="font-size: 18px;margin-bottom: 16px;">
+										<span>￥[[${air.price}]]起</span>
+									</p>
+
 								</a>
 							</li>
 

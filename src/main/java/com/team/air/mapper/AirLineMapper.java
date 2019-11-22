@@ -2,7 +2,6 @@ package com.team.air.mapper;
 
 import com.team.air.bean.*;
 import org.apache.ibatis.annotations.*;
-import org.junit.jupiter.api.Order;
 
 import java.util.Collection;
 import java.util.List;
@@ -10,23 +9,16 @@ import java.util.List;
 @Mapper
 public interface AirLineMapper {
 
-    @Select("select * from ticketLine where order_id = #{id}")
-    public TicketLine getTicketByOrderId(String id);
-
-    @Select("select * from orderLine")
-    public List<OrderLine> getAllOrder();
-
-    @Select("Select * from passengers where passenger_id = #{id}")
-    public Passengers getPserById(String id);
-
-    @Select("select * from orderLine where user_id = #{id}")
-    public List<OrderLine> getOrderByUser(Integer id);
-
+    /**
+     * 增加记录都在这
+     *
+     * @param orderLine
+     * @return
+     */
     //添加订单
     @Insert("insert ignore into orderLine(order_id,user_id,time,all_price,status)" +
             "values(#{order_id},#{user_id},#{time},#{all_price},#{status})")
     public int addOrder(OrderLine orderLine);
-
     //添加机票
     @Options(useGeneratedKeys = true,keyProperty = "ticket_id")
     @Insert("INSERT INTO ticketLine(" +
@@ -46,7 +38,12 @@ public interface AirLineMapper {
             "values(#{passenger_id},#{flight_id},#{user_id},#{name},#{ID},#{sex},#{status},#{numbers})") //错误在这
     public int addPser(Passengers passengers);
 
-
+    /**
+     * 修改记录都在这里
+     *
+     * @param order_id
+     * @return
+     */
     @Update("update orderLine set status = 2 where order_id = #{ordee_id}")
     public int refund2(String order_id);
 
@@ -63,6 +60,24 @@ public interface AirLineMapper {
     @Update("update Fleaves set leaveTickets=#{leaveTickets} where flight_id=#{flight_id} and seatType = #{seatType}")
     public int updateFleave(Fleave fleave);
 
+
+    /**
+     * 查找记录都在这
+     * @param id
+     * @return
+     */
+
+    @Select("select * from ticketLine where order_id = #{id}")
+    public TicketLine getTicketByOrderId(String id);
+
+    @Select("select * from orderLine")
+    public List<OrderLine> getAllOrder();
+
+    @Select("Select * from passengers where passenger_id = #{id}")
+    public Passengers getPserById(String id);
+
+    @Select("select * from orderLine where user_id = #{id}")
+    public List<OrderLine> getOrderByUser(Integer id);
 
     @Select("select * from orderLine where order_id = #{id}")
     public OrderLine getOrderById(String id);

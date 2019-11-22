@@ -1,6 +1,7 @@
 package com.team.air;
 
 import com.team.air.bean.*;
+import com.team.air.mapper.AdminMapper;
 import com.team.air.mapper.AirLineMapper;
 import com.team.air.mapper.UserMapper;
 import org.junit.Test;
@@ -25,14 +26,28 @@ public class SpringbootAirApplicationTests {
     @Autowired
     AirLineMapper airLineMapper;
 
+    @Autowired
+    AdminMapper adminMapper;
+
     @Test
     public void contextLoads() {
 
-        List<OrderLine> allOrder = airLineMapper.getAllOrder();
+        List<FlightPlus> flightPluses = adminMapper.getAllByFlights();
 
-        for (OrderLine o : allOrder){
-            System.out.println(o.toString());
+        for (FlightPlus f: flightPluses){
+            List<Fleave> fl = adminMapper.getFleaveById(f.getFlight_id());
+            f.setFleaves(fl);
+
+            System.out.println(f.toString());
         }
+
+
+
+//        List<OrderLine> allOrder = airLineMapper.getAllOrder();
+//
+//        for (OrderLine o : allOrder){
+//            System.out.println(o.toString());
+//        }
 //        Collection<AirLine> allAirline = airLineMapper.getAllAirline();
 //        Collection<SeatsInfo> seatsInfo = airLineMapper.getSeatsInfo();
 //        Collection<AirLine> a = airLineMapper.getAllAirline();

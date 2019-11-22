@@ -1,0 +1,102 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>查看航班</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/assets/css/mycss/dashboard.css}" rel="stylesheet">
+</head>
+<style>
+    .table{
+        text-align: center;
+    }
+    .table td {
+        vertical-align: middle;
+    }
+    .table tr{
+        height: 84px;
+    }
+</style>
+
+<body>
+
+<!--引入公共头部-->
+<div th:replace="~{commons/bar :: topbar}"></div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <!--引入公共侧边栏-->
+        <div th:replace="~{commons/bar :: #sidebar(activeUri='flights')}"></div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+            <h2>全部航班信息</h2>
+            <br>
+            <div class="table-responsive">
+            <table class="table table-striped table-sm">
+            <thead>
+            <tr style="height: 32px;">
+                <th>航班编号</th>
+                <th>出发地</th>
+                <th>目的地</th>
+                <th>出发时间</th>
+                <th>到达时间</th>
+                <th>余票量</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="fp :${fps}">
+                <td th:text="${fp.flight_id}"></td>
+                <td th:text="${fp.origin}"></td>
+                <td th:text="${fp.destination}"></td>
+                <td th:text="${#dates.format(fp.start_time,'MM月dd日 HH:mm')}"></td>
+                <td th:text="${#dates.format(fp.end_time,'MM月dd日 HH:mm')}"></td>
+                <td th:if="${#lists.isEmpty(fp.Fleaves)}" style="color: orangered;">未分配客机</td>
+                <td th:if="${not #lists.isEmpty(fp.Fleaves)}">
+                    <ul style="padding: 0;list-style:none" >
+                        <li th:each="fl : ${fp.Fleaves}" style="margin: 4px">
+                            <b th:text="(${fl.seatType}==1)? '一等座' : '二等座'"></b>
+                            当前余票数：<b th:text="${fl.leaveTickets}" style="color: forestgreen;"></b>
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <a style="color: green;">修改航班</a>&nbsp;&nbsp;
+                    <a style="color: firebrick;">删除航班</a>
+                </td>
+            </tr>
+
+            </tbody>
+            </table>
+            </div>
+
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+
+
+<!-- Icons -->
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<script>
+    feather.replace()
+</script>
+
+
+<script>
+
+</script>
+</body>
+</html>

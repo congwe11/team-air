@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>管理员登录</title>
+	<link rel="stylesheet" href="/assets/css/mycss/auth.css">
+</head>
+
+<body>
+	<div class="lowin lowin-blue">
+		<div class="lowin-brand">
+			<img src="/assets/img/kodinger.jpg" alt="logo">
+		</div>
+		<div class="lowin-wrapper">
+			<div class="lowin-box lowin-login">
+				<div class="lowin-box-inner">
+					<form action="/admin/login" method="post">
+						<p>登录后 继续</p>
+						<div class="lowin-group">
+							<label>管理员账号 </label>
+							<input type="text" name="ad_username" class="lowin-input" required>
+						</div>
+						<div class="lowin-group password-group">
+							<label>密码 </label>
+							<input type="password" name="ad_psw" class="lowin-input" required>
+						</div>
+						<button class="lowin-btn login-btn" type="submit">
+							登录
+						</button>
+
+						<div class="text-foot">
+							<p id="loginInfo" style="color: orangered;" th:text="${msg}" th:if="${ not #strings.isEmpty(msg)}"></p>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+
+	</script>
+</body>
+</html>

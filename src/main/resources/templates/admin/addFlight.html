@@ -1,0 +1,104 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>查看航班</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/assets/css/mycss/dashboard.css}" rel="stylesheet">
+</head>
+<style>
+    .table{
+        text-align: center;
+    }
+    .table td {
+        vertical-align: middle;
+    }
+    .table tr{
+        height: 44px;
+    }
+</style>
+
+<body>
+
+<!--引入公共头部-->
+<div th:replace="~{commons/bar :: topbar}"></div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <!--引入公共侧边栏-->
+        <div th:replace="~{commons/bar :: #sidebar(activeUri='addflight')}"></div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+            <h2>全部退票记录</h2>
+            <br>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr style="height: 32px;">
+                        <th>#</th>
+                        <th>订单编号</th>
+                        <th>客户</th>
+                        <th>下单时间</th>
+                        <th>总金额</th>
+                        <th>审核操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <input type="hidden" th:value="${msg}" id="msg">
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<script type="text/javascript">
+    function approve() {
+
+        if(confirm("你确定通过订单RO-1"+"的退票申请吗？")){
+
+            return true;
+        }else {
+            return false;
+        }
+    }
+    function refuse() {
+        if(confirm("你确定拒绝订单RO-1"+"的退票申请吗？")){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    window.onload = function () {
+        if ( msg.value != "")
+        {
+            window.alert(msg.value);
+        }
+    }
+</script>
+<!-- Icons -->
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<script>
+    feather.replace()
+</script>
+
+
+</body>
+</html>

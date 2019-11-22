@@ -47,7 +47,6 @@ public class UserController {
         }else {
             //登录成功，并将用户信息存入session
             session.setAttribute("loginUser",user);
-            System.out.println(user);
             System.out.println(user.getUsername());
             return "redirect:/index";
         }
