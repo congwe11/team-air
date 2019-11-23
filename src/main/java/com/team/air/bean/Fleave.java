@@ -8,6 +8,15 @@ public class Fleave {
     private Integer seatType;
     private int leaveTickets;
 
+    @Override
+    public String toString() {
+        return "Fleave{" +
+                "flight_id=" + flight_id +
+                ", seatType=" + seatType +
+                ", leaveTickets=" + leaveTickets +
+                '}';
+    }
+
     public Integer getFlight_id() {
         return flight_id;
     }

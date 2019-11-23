@@ -33,8 +33,9 @@ public class MyMvcConfig {
                 registry.addViewController("/book/airline").setViewName("custom/flightInfo");
 
                 //管理员登录页面
-                registry.addViewController("/admin/").setViewName("admin/adSign");
+                registry.addViewController("/admin").setViewName("admin/adSign");
                 registry.addViewController("/admin/sign").setViewName("admin/adSign");
+                registry.addViewController("/admin/").setViewName("admin/adSign");
                 //管理员主页
                 registry.addViewController("/admin/dashboard").setViewName("admin/dashboard");
 
@@ -49,13 +50,14 @@ public class MyMvcConfig {
                 //SpringBoot已经做好了静态资源映射
                 registry.addInterceptor(new LoginHandlerInterceptor())
                         .addPathPatterns("/book","/user/book","/user/selfInfo","/user/upUserInfo", "/user/upPsw",
-                                "/book/pserinfo","/book/pay","/book/finish","/book/airline/**", "/book/myorder/**"
-                                )
+                                "/book/pserinfo","/book/pay","/book/finish","/book/airline/**", "/book/myorder/**")
                         .excludePathPatterns("/book/airline","/book/search");
 
-//                registry.addInterceptor(new adLoginHandlerInterceptor())
-//                        .addPathPatterns("/admin/dashboard","/admin/add"
-//                                );
+                registry.addInterceptor(new adLoginHandlerInterceptor())
+                        .addPathPatterns("/admin/delFlight","/admin/upFlight","/admin/upPlane","/admin/addplane","/admin/addflight"
+                                ,"/admin/f_finish","/admin/review","/admin/approve","/admin/refuse","/admin/flights"
+                                , "/admin/normalFlight","/admin/failFlight","/admin/planes","/admin/dashboard")
+                        .excludePathPatterns("/admin","/admin/","/admin/sign");
             }
 
 

@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>查看航班</title>
+    <title>修改客机</title>
 
     <!-- Bootstrap core CSS -->
     <link th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.css}" rel="stylesheet">
@@ -35,23 +35,24 @@
 <div class="container-fluid">
     <div class="row">
         <!--引入公共侧边栏-->
-        <div th:replace="~{commons/bar :: #sidebar(activeUri='addplane')}"></div>
+        <div th:replace="~{commons/bar :: #sidebar(activeUri='planes')}"></div>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 
-            <h2>添加客机信息</h2>
+            <h2>修改客机信息</h2>
             <hr><br>
             <div class="table-responsive">
 
-                <form th:action="@{/admin/p_finish}" th:method="post" style="padding-left: 20px;">
+                <form th:action="@{/admin/upPlane}" th:method="post" style="padding-left: 20px;">
                     <div class="row">
                         <div class="coL-md-9 col-md-10">
                             <div class="form-group">
                                 <h4>客机基本信息</h4>
                                 <hr>
+                                <input type="hidden" name="plane_id" th:value="${plane.plane_id}" />
                                 <label for="planeName" class="">客机名称:&nbsp; </label>
-                                <span style="color: darkred; font-size: 12px;">&nbsp;&nbsp;客机名称/客机编号，如:WULI,&nbsp;&nbsp;复兴号</span>
-                                <input type="text" class="form-control" name="planeName" id="planeName" required>
+                                <!--<span style="color: darkred; font-size: 12px;">&nbsp;&nbsp;客机名称/客机编号，如:WULI,&nbsp;&nbsp;复兴号</span>-->
+                                <input type="text" class="form-control" name="planeName" id="planeName" th:value="${plane.planeName}" required>
                             </div>
 
                         </div>
@@ -64,22 +65,22 @@
                     <div class="row">
                         <div class="coL-md-4 col-sm-4">
                             <div class="form-group">
-                            <h6>一等座：</h6>
-                            <label for="seatCount1">数量：</label>
-                            <input type="hidden" name="sType1" th:value="1">
-                            <input type="text" class="form-control" name="seatCount1" id="seatCount1" required>
-                            <label for="seatPrice1">价格：</label>
-                            <input type="text" class="form-control" name="seatPrice1" id="seatPrice1" required>
+                                <h6>一等座：</h6>
+                                <input type="hidden" name="sType1" th:value="1">
+                                <label for="seatCount1">数量：</label>
+                                <input type="text" class="form-control" name="seatCount1" th:value="${s1.seatCount}" id="seatCount1" required>
+                                <label for="seatPrice1">价格：</label>
+                                <input type="text" class="form-control" name="seatPrice1" th:value="${s1.seatPrice}" id="seatPrice1" required>
                             </div>
                         </div>
                         <div class="coL-md-4 col-sm-4">
                             <div class="form-group">
-                            <h6>二等座：</h6>
-                            <label for="seatCount2">数量：</label>
-                            <input type="hidden" name="sType1" th:value="2">
-                            <input type="text" class="form-control" name="seatCount2" id="seatCount2" required>
-                            <label for="seatPrice2">价格：</label>
-                            <input type="text" class="form-control" name="seatPrice2" id="seatPrice2" required>
+                                <h6>二等座：</h6>
+                                <label for="seatCount2">数量：</label>
+                                <input type="hidden" name="sType1" th:value="2">
+                                <input type="text" class="form-control" name="seatCount2" th:value="${s2.seatCount}" id="seatCount2" required>
+                                <label for="seatPrice2">价格：</label>
+                                <input type="text" class="form-control" name="seatPrice2" th:value="${s2.seatPrice}" id="seatPrice2" required>
                             </div>
                         </div>
                     </div>

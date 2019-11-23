@@ -5,6 +5,14 @@ public class AirLine {
     private Integer plane_id;
     private Integer flight_id;
 
+    @Override
+    public String toString() {
+        return "AirLine{" +
+                "plane_id=" + plane_id +
+                ", flight_id=" + flight_id +
+                '}';
+    }
+
     public Integer getPlane_id() {
         return plane_id;
     }

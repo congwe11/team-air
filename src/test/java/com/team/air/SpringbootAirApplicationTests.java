@@ -3,6 +3,7 @@ package com.team.air;
 import com.team.air.bean.*;
 import com.team.air.mapper.AdminMapper;
 import com.team.air.mapper.AirLineMapper;
+import com.team.air.mapper.PlaneMapper;
 import com.team.air.mapper.UserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,17 +30,30 @@ public class SpringbootAirApplicationTests {
     @Autowired
     AdminMapper adminMapper;
 
+    @Autowired
+    PlaneMapper planeMapper;
+
     @Test
     public void contextLoads() {
 
-        List<FlightPlus> flightPluses = adminMapper.getAllByFlights();
 
-        for (FlightPlus f: flightPluses){
-            List<Fleave> fl = adminMapper.getFleaveById(f.getFlight_id());
-            f.setFleaves(fl);
 
-            System.out.println(f.toString());
-        }
+        Integer i = planeMapper.countPS1("7");
+
+        Integer j = planeMapper.countPS2("7");
+
+        System.out.println(i);
+        System.out.println(j);
+
+
+//        List<FlightPlus> flightPluses = adminMapper.getAllByFlights();
+//
+//        for (FlightPlus f: flightPluses){
+//            List<Fleave> fl = adminMapper.getFleaveById(f.getFlight_id());
+//            f.setFleaves(fl);
+//
+//            System.out.println(f.toString());
+//        }
 
 
 

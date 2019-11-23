@@ -15,6 +15,12 @@ public interface AdminMapper {
     @Select("select * from flight")
     public List<FlightPlus> getAllByFlights();
 
+    @Select("select * from flight where status = 1 ")
+    public List<FlightPlus> getNorByFlights();
+
+    @Select("select * from flight where status != 1")
+    public List<FlightPlus> getFailByFlights();
+
     @Select("SELECT * FROM Fleaves WHERE flight_id = #{flight_id}")
     public List<Fleave> getFleaveById(Integer flight_id);
 

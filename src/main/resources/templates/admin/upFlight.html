@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>查看航班</title>
+    <title>修改客机</title>
 
     <!-- Bootstrap core CSS -->
     <link th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.css}" rel="stylesheet">
@@ -35,72 +35,49 @@
 <div class="container-fluid">
     <div class="row">
         <!--引入公共侧边栏-->
-        <div th:replace="~{commons/bar :: #sidebar(activeUri='addflight')}"></div>
+        <div th:replace="~{commons/bar :: #sidebar(activeUri='flights')}"></div>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 
-            <h2>录入航班信息</h2>
+            <h2>修改客机信息</h2>
             <hr><br>
             <div class="table-responsive">
 
-                <form th:action="@{/admin/f_finish}" method="post" style="padding-left: 20px;">
+                <form th:action="@{/admin/upFlight}" th:method="post" style="padding-left: 20px;">
                     <div class="row">
                         <div class="col-md-9 col-sm-10">
                             <h4>航班基本信息</h4>
                             <hr>
+                            <input th:value="${flight.flight_id}" type="hidden" name="flight_id">
                             <div class="form-group">
                                 <label for="origin">出发城市：</label>
-                                <input type="text" class="form-control" name="origin" id="origin" required>
+                                <input type="text" class="form-control" name="origin" th:value="${flight.origin}" id="origin" required>
                             </div>
                             <div class="form-group">
                                 <label for="destination">目的城市：</label>
-                                <input type="text" class="form-control" name="destination" id="destination" required>
+                                <input type="text" class="form-control" name="destination" th:value="${flight.destination}" id="destination" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4 col-sm-5">
                             <label for="start_name">出发时间：</label>
-                            <input type="datetime-local" class="form-control" name="start_time" id="start_name" required>
+                            <input type="text" class="form-control" name="start_time" th:value="${#dates.format(flight.start_time,'yyyy-MM-dd hh:mm')}" id="start_name" required>
                         </div>
                         <div class="col-md-4 col-sm-5">
                             <label for="end_name">预计到达时间：</label>
-                            <input type="datetime-local" class="form-control" name="end_time" id="end_name" required>
+                            <input type="text" class="form-control" name="end_time" th:value="${#dates.format(flight.end_time,'yyyy-MM-dd hh:mm')}" id="end_name" required>
                         </div>
                     </div>
                     <hr/>
                     <br>
 
-                    <div class="row">
-                        <div class="col-md-4 col-sm-5">
-                            <div class="form-group">
-                                <h4>分配客机</h4>
-                                <hr>
-                                <label for="Select1">
-                                    客机
-                                    <span style="color: darkred;">&nbsp;&nbsp;请为航班选择一个客机</span>
-                                </label>
-                                <select class="form-control" name="plane_id" id="Select1">
-                                    <option  th:value="${p.plane_id}" th:text="${p.planeName}" th:each="p : ${planes}"></option>
-
-
-                                </select>
-                                <br>
-                                <p th:if="${#lists.isEmpty(planes)}" style="color: red;">
-                                    对不起,没有可以空闲的客机,请先添加一条客机!
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <br>
-                    <hr>
-                    <button type="submit" onclick="return confirm()" class="btn btn-primary">提交</button>
-
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    <button type="submit" class="btn btn-primary">提交</button>
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                 </form>
             </div>
             <input type="hidden" th:value="${msg}" id="msg">
+
         </main>
     </div>
 </div>
@@ -109,13 +86,7 @@
 ================================================== -->
 <script type="text/javascript">
 
-    function confirm(){
-        if(confirm("确认录入该航班信息?")){
-            return true;
-        }else{
-            return false;
-        }
-    }
+
 
     window.onload = function () {
         if ( msg.value != "")
