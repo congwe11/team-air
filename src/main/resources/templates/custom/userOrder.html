@@ -4,8 +4,8 @@
 		<meta charset="utf-8">
 		<title>用户订单</title>
 		<!-- <link rel="stylesheet" href="assets/css/style.css"/> -->
-		<link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="/assets/css/mycss/user.css" />
+		<link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}" href="/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" th:href="@{/assets/css/mycss/user.css}" href="/assets/css/mycss/user.css" />
 		<style>
 			.d2 p{
 				margin: 0;
@@ -120,7 +120,7 @@
 				<div class="row">
 					<div class="d1 col-md-10 col-md-offset-1" style="padding-left: 30px;" >
 						<ol class="breadcrumb">
-						  <li><a href="/index">首页</a></li>
+						  <li><a th:href="@{/index}"  href="/index">首页</a></li>
 						  <li><a href="">订单</a></li>
 						  <li class="active">机票订单</li>
 						</ol>
@@ -128,7 +128,7 @@
 					<nav class="col-md-2 col-md-offset-1 sidebar">
 						<div class="sidebar-sticky">
 							<ul class="nav nav-pills nav-stacked">
-							  <li role="presentation" ><a href="/user/selfInfo">个人信息</a></li>
+							  <li role="presentation" ><a th:href="@{/user/selfInfo}">个人信息</a></li>
 							  <li role="presentation" class="active"><a>我的订单</a></li>
 							</ul>
 						</div>

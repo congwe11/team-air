@@ -1,7 +1,7 @@
-#server:
-#  servlet:
-#    context-path: /air
-
+server:
+  servlet:
+    context-path: /air
+  port: 80
 
 spring:
   datasource:
@@ -39,4 +39,4 @@ spring:
 
 mybatis:
   configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

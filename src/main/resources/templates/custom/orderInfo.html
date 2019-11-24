@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="description" content="订单详情页面">
-		<link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="/assets/css/font-awesome.min.css"/>
-		<link rel="stylesheet" href="/assets/css/mycss/flightDetails.css" />
+		<link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}" href="/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" th:href="@{/assets/css/font-awesome.min.css}" href="/assets/css/font-awesome.min.css"/>
+		<link rel="stylesheet" th:href="@{/assets/css/mycss/flightDetails.css}" href="/assets/css/mycss/flightDetails.css" />
 		<title>订单详情</title>
 		
 		<style>
@@ -154,8 +154,8 @@
 			            <div class="navbar-header">
 							<a class="navbar-brand" href="index.html"><span>Book</span>ing</a>
 							<ul class="navbar-left" style="">
-								<li class="nav1"><a class="" href="/index">首页</a></li>
-								<li class="nav1"><a class="" href="/book/airline">订票</a></li>
+								<li class="nav1"><a class="" th:href="@{/index}">首页</a></li>
+								<li class="nav1"><a class="" th:href="@{/book/airline}">订票</a></li>
 							</ul>
 							
 			            </div><!--/.navbar-header-->

@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>管理员登录</title>
-	<link rel="stylesheet" href="/assets/css/mycss/auth.css">
+	<link rel="stylesheet" th:href="@{/assets/css/mycss/auth.css}" href="">
 </head>
 
 <body>
@@ -15,7 +15,7 @@
 		<div class="lowin-wrapper">
 			<div class="lowin-box lowin-login">
 				<div class="lowin-box-inner">
-					<form action="/admin/login" method="post">
+					<form th:action="@{/admin/login}" action="/admin/login" method="post">
 						<p>登录后 继续</p>
 						<div class="lowin-group">
 							<label>管理员账号 </label>
